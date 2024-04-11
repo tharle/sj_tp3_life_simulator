@@ -17,3 +17,12 @@ S/Arrow Down | Navigation vers le Bas | Déplacement vers la caméra | --- | ---
 Space / LMB sur (!) | --- | Selectioner Mini-Game | --- | ---|
 Enter/LMB sur Button | Sélection de l’option | --- | --- | --- |
 
+## Mini-game 1: 
+
+### Description
+### Objectives
+
+## Mini-game 2: 
+
+### Description
+### Objectives
