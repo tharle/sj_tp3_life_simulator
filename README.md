@@ -3,7 +3,21 @@
 
 Tharle Josefi de Camargo H2024
 
-## Title du Jeu
+<details open>
+<summary><h2>Index<h2></summary>
+
+* [Title du Jeu](#title-du-jeu)
+* [Les Contrôles du personnage](#les-contrôles-du-personnage)
+* [Mini-game 1](#mini-game-1)
+  * [Description](#description)
+  * [Objectives](#objectives)
+* [Mini-game 2](#mini-game-2)
+  * [Description](#description-1)
+  * [Objectives](#objectives-1)
+</details>
+
+
+## Title du Jeu:
 ---
 
 ## Les Contrôles du personnage:
