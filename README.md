@@ -1,4 +1,4 @@
-![Header](https://github.com/tharle/sj_tp1_age_of_none/blob/main/header_readme.PNG)
+![Header](https://github.com/tharle/sj_tp3_life_simulator/blob/main/header_readme.PNG)
 # Document de Design pour le Travail Pratique 3: Mini-Game
 
 Tharle Josefi de Camargo H2024
