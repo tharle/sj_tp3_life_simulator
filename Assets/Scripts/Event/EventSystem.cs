@@ -1,20 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public enum EEventType
 {
-    PauseMenu,
-    Run,
-    MiniGame1,
-    MiniGame2,
-    Won
+    GameStatePauseMenu,
+    GameStateRun,
+    GameStateMiniGame1,
+    GameStateMiniGame2,
+    GameStateWon
 }
 
 public class EventSystem
 {
-    private Dictionary<EEventType, Action<Dictionary<string, object>>> m_Events;
+    private Dictionary<EEventType, Action<EventMessage>> m_Events;
 
     #region Singleton
     private static EventSystem m_Instance;
@@ -34,16 +35,16 @@ public class EventSystem
 
     private EventSystem()
     {
-        m_Events = new Dictionary<EEventType, Action<Dictionary<string, object>>>();
+        m_Events = new Dictionary<EEventType, Action<EventMessage>>();
     }
 
-    public void SubscribeTo(EEventType eventTypeId, Action<Dictionary<string, object>> action)
+    public void SubscribeTo(EEventType eventTypeId, Action<EventMessage> action)
     {
         if (m_Events.ContainsKey(eventTypeId)) m_Events.Add(eventTypeId, action);
         else m_Events[eventTypeId] += action;
     }
 
-    public void UnsubscribeFrom(EEventType eventTypeId, Action<Dictionary<string, object>> action)
+    public void UnsubscribeFrom(EEventType eventTypeId, Action<EventMessage> action)
     {
         if (!m_Events.ContainsKey(eventTypeId)) return;
 
@@ -52,7 +53,7 @@ public class EventSystem
         if (m_Events[eventTypeId] == null) m_Events.Remove(eventTypeId);
     }
 
-    public void TriggerEvent(EEventType eventTypeId, Dictionary<string, object> parameters)
+    public void TriggerEvent(EEventType eventTypeId, EventMessage parameters)
     {
         m_Events[eventTypeId]?.Invoke(parameters);
     }
