@@ -37,7 +37,7 @@ public class GameEventSystem
 
     public void SubscribeTo(EGameEvent eventId, Action<GameEventMessage> action)
     {
-        if (m_Events.ContainsKey(eventId)) m_Events.Add(eventId, action);
+        if (!m_Events.ContainsKey(eventId)) m_Events.Add(eventId, action);
         else m_Events[eventId] += action;
     }
 

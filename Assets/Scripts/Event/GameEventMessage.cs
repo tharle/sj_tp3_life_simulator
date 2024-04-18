@@ -37,8 +37,15 @@ public class GameEventMessage
         }
     }
 
-    public object Get(EGameEventMessage eventMessageId)
+    public bool Contains<T>(EGameEventMessage eventMessageId, out T value)
     {
-        return m_Params.ContainsKey(eventMessageId) ? m_Params[eventMessageId] : false;
+        value = default;
+        if (m_Params.ContainsKey(eventMessageId) && m_Params[eventMessageId] is T)
+        {
+            value = (T) m_Params[eventMessageId];
+            return true;
+        }
+
+       return false;
     }
 }

@@ -47,10 +47,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnMiniGameEnd(GameEventMessage message)
     {
-        ItemData item = (ItemData) message.Get(EGameEventMessage.Item);
-        m_Inventory.Add(item);
+        if (message.Contains<ItemData>(EGameEventMessage.Item, out ItemData item))
+        {
+            m_Inventory.Add(item);
+            m_EventSystem.TriggerEvent(EGameEvent.InventoryChanged, new GameEventMessage(EGameEventMessage.Inventory, m_Inventory));
+        }
 
-        m_EventSystem.TriggerEvent(EGameEvent.InventoryChanged, new GameEventMessage(EGameEventMessage.Inventory, m_Inventory));
     }
 
     public void Execute()
