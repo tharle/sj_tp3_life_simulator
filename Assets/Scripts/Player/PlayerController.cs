@@ -1,9 +1,13 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    PlayerMoveController m_PlayerMoveController;
+    private List<ItemData> m_Inventory;
+
+    private PlayerMoveController m_PlayerMoveController;
+    private GameEventSystem m_EventSystem;
 
 
     private static PlayerController m_Instance;
@@ -20,6 +24,33 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         m_PlayerMoveController = GetComponent<PlayerMoveController>();
+        m_EventSystem = GameEventSystem.Instance;
+        m_Inventory = new List<ItemData>();
+
+        SubscribeAll();
+    }
+
+    private void OnDisable()
+    {
+        UnsubscribeAll();
+    }
+
+    private void SubscribeAll()
+    {
+        m_EventSystem.SubscribeTo(EGameEvent.MiniGameEnd, OnMiniGameEnd);
+    }
+
+    private void UnsubscribeAll()
+    {
+        m_EventSystem.UnsubscribeFrom(EGameEvent.MiniGameEnd, OnMiniGameEnd);
+    }
+
+    private void OnMiniGameEnd(GameEventMessage message)
+    {
+        ItemData item = (ItemData) message.Get(EGameEventMessage.Item);
+        m_Inventory.Add(item);
+
+        m_EventSystem.TriggerEvent(EGameEvent.InventoryChanged, new GameEventMessage(EGameEventMessage.Inventory, m_Inventory));
     }
 
     public void Execute()

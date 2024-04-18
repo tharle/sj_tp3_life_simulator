@@ -20,10 +20,10 @@ public class CreatAssetBundles
             assetBundleDefinitionList.Add(ab);
         }
 
-        // SPRITE STAMP
+        // SPRITE ITEM
         {
             AssetBundleBuild ab = new();
-            ab.assetBundleName = BundleNames.SPRITE_STAMP;
+            ab.assetBundleName = BundleNames.SPRITE_ITEM;
             ab.assetNames = RecursiveGetAllAssetsInDirectory(BundlePath.BUNDLE_ASSETS + BundlePath.SPRITES_STAMPS).ToArray();
             assetBundleDefinitionList.Add(ab);
         }

@@ -34,7 +34,7 @@ public class GameParameters
         public const string PREFAB_LEVEL = "prefab_level";
         public const string SCRIT_OBJETS = "data";
         public const string SFX = "sfx";
-        public const string SPRITE_STAMP = "sprite_stamp";
+        public const string SPRITE_ITEM = "sprite_item";
     }
 
     public class BundlePath
