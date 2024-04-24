@@ -18,7 +18,7 @@ public class GameStateWin : AGameState
         Debug.Log("IS WIN");
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            m_AttachedBehavior.ChangeState(EGameState.MemoryGame);
+            m_AttachedBehavior.ChangeState(EGameState.MiniGameBread);
         }
     }
 

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerMoveController : MonoBehaviour
 {
-    [SerializeField] private float m_Speed = 5.0f;
-    [SerializeField] private Transform m_CameraTransform;
-    [SerializeField] private float m_Angle = 15.0f;
+    [SerializeField] private float m_SpeedPlayer = 5.0f;
+    [SerializeField] private float m_SpeedAngleCamera = 15.0f;
 
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
@@ -38,7 +37,7 @@ public class PlayerMoveController : MonoBehaviour
             //Oriente le personnage vers la direction de déplacement et applique la vélocité dans la même direction
             transform.forward = directionDep;
             
-            velocity = directionDep * m_Speed;
+            velocity = directionDep * m_SpeedPlayer;
         }
         m_Animator.SetFloat(GameParameters.AnimationPlayer.FLOAT_VELOCITY, velocity.magnitude);
         velocity.y = m_Rigidbody.velocity.y;
@@ -49,7 +48,7 @@ public class PlayerMoveController : MonoBehaviour
     {
         Vector3 eulerAngle = GetCameraTransform().rotation.eulerAngles;
         // Horizontal camera
-        eulerAngle.y += m_Angle * Input.GetAxis(GameParameters.InputName.AXIS_MOUSE_HORIZONTAL);
+        eulerAngle.y += m_SpeedAngleCamera * Input.GetAxis(GameParameters.InputName.AXIS_MOUSE_HORIZONTAL);
         eulerAngle.y = eulerAngle.y > 360 ? eulerAngle.y - 360 : eulerAngle.y;
         eulerAngle.y = eulerAngle.y < 0 ? eulerAngle.y + 360 : eulerAngle.y;
 

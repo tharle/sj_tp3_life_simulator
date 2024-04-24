@@ -7,8 +7,8 @@ public enum EGameState
 {
     PauseMenu,
     Run,
-    MemoryGame,
-    ReflexGame,
+    MiniGameBread,
+    MiniGameMeat,
     Win
 }
 public abstract class AGameState

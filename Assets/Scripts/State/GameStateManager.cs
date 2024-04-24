@@ -18,6 +18,8 @@ public class GameStateManager : MonoBehaviour
         m_States.Add(EGameState.Win, new GameStateWin(this));
         m_States.Add(EGameState.PauseMenu, new GameStatePauseMenu(this));
         m_States.Add(EGameState.Run, new GameStateRun(this));
+        m_States.Add(EGameState.MiniGameBread, new GameStateMiniGameBread(this));
+        m_States.Add(EGameState.MiniGameMeat, new GameStateMiniGameMeat(this));
 
         m_CurrentStateId = EGameState.Run;
         m_CurrentState = m_States[m_CurrentStateId];
