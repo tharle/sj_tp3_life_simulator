@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStateWin : AGameState
+public class PlayerStateWin : APlayerState
 {
-    public GameStateWin(GameStateManager attachedBehavior) : base(attachedBehavior, EGameState.Win)
+    public PlayerStateWin(PlayerBehaviorManager attachedBehavior) : base(attachedBehavior, EPlayerState.Win)
     {
     }
 
@@ -18,7 +18,7 @@ public class GameStateWin : AGameState
         Debug.Log("IS WIN");
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            m_AttachedBehavior.ChangeState(EGameState.MiniGameBread);
+            m_AttachedBehavior.ChangeState(EPlayerState.MiniGameBread);
         }
     }
 

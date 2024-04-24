@@ -52,6 +52,12 @@ public class GameEventSystem
 
     public void TriggerEvent(EGameEvent eventId, GameEventMessage parameters)
     {
+        if (!m_Events.ContainsKey(eventId)) 
+        {
+            Debug.Log($"Impossible trigger Event {eventId}.");
+            return;
+        }
+
         m_Events[eventId]?.Invoke(parameters);
     }
 }

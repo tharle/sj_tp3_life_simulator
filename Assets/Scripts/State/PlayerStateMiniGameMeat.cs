@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStateMiniGameMeat : AGameState
+public class PlayerStateMiniGameMeat : APlayerState
 {
     MiniGameMeatController m_Controller;
-    public GameStateMiniGameMeat(GameStateManager attachedBehavior) : base(attachedBehavior, EGameState.MiniGameMeat)
+    public PlayerStateMiniGameMeat(PlayerBehaviorManager attachedBehavior) : base(attachedBehavior, EPlayerState.MiniGameMeat)
     {
         m_Controller = MiniGameMeatController.Instance;
     }
@@ -18,7 +18,7 @@ public class GameStateMiniGameMeat : AGameState
     public override void Execute()
     {
         m_Controller.Execute();
-        m_AttachedBehavior.ChangeState(EGameState.Run);
+        m_AttachedBehavior.ChangeState(EPlayerState.Run);
     }
 
     public override void Exit()

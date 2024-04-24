@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStatePauseMenu : AGameState
+public class PlayerStatePauseMenu : APlayerState
 {
-    public GameStatePauseMenu(GameStateManager attachedBehavior) : base(attachedBehavior, EGameState.PauseMenu)
+    public PlayerStatePauseMenu(PlayerBehaviorManager attachedBehavior) : base(attachedBehavior, EPlayerState.PauseMenu)
     {
     }
 
@@ -19,7 +19,7 @@ public class GameStatePauseMenu : AGameState
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            m_AttachedBehavior.ChangeState(EGameState.PauseMenu);
+            m_AttachedBehavior.ChangeState(EPlayerState.PauseMenu);
         }
     }
 
