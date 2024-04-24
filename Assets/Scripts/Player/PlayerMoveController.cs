@@ -1,7 +1,4 @@
 using Cinemachine;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,6 +6,7 @@ public class PlayerMoveController : MonoBehaviour
 {
     [SerializeField] private float m_Speed = 5.0f;
     [SerializeField] private Transform m_CameraTransform;
+    [SerializeField] private float m_Angle = 15.0f;
 
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
@@ -22,6 +20,7 @@ public class PlayerMoveController : MonoBehaviour
     public void Execute()
     {
         Move();
+        if (Input.GetMouseButton((int)MouseButton.Left)) RotateCamera();
     }
 
     private void Move()
@@ -46,9 +45,25 @@ public class PlayerMoveController : MonoBehaviour
         m_Rigidbody.velocity = velocity;
     }
 
+    private void RotateCamera()
+    {
+        Vector3 eulerAngle = GetCameraTransform().rotation.eulerAngles;
+        // Horizontal camera
+        eulerAngle.y += m_Angle * Input.GetAxis(GameParameters.InputName.AXIS_MOUSE_HORIZONTAL);
+        eulerAngle.y = eulerAngle.y > 360 ? eulerAngle.y - 360 : eulerAngle.y;
+        eulerAngle.y = eulerAngle.y < 0 ? eulerAngle.y + 360 : eulerAngle.y;
+
+        // J'ai eu des problèmes pour mettre de limite dans la camera Vertical
+        // Donc, j'ai abandoné ça
+        /*eulerAngle.x += m_Angle * Input.GetAxis("Mouse Y"); // Vertical camera
+        eulerAngle.x = eulerAngle.x > 40 ? 40 : eulerAngle.x;
+        eulerAngle.x = eulerAngle.x < -45 ? -45 : eulerAngle.x;*/
+
+        GetCameraTransform().rotation = Quaternion.Euler(eulerAngle.x, eulerAngle.y, eulerAngle.z);
+    }
+
     private Transform GetCameraTransform()
     {
-        // return m_CinemachineBrain.transform;
-        return m_CameraTransform;
+        return CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.VirtualCameraGameObject.transform;
     }
 }
