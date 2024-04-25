@@ -18,7 +18,12 @@ public class PlayerStateMiniGameBread : APlayerState
     public override void Execute()
     {
         m_Controller.Execute();
-        m_AttachedBehavior.ChangeState(EPlayerState.Run);
+        //m_AttachedBehavior.ChangeState(EPlayerState.Run);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+           m_Controller.EndMinigame();
+        }
     }
 
     public override void Exit()

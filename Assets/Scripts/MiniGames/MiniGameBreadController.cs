@@ -22,9 +22,6 @@ public class MiniGameBreadController : AMiniGameController
 
     public override void Execute()
     {
-        GameEventMessage eventMessage = new GameEventMessage();
-        eventMessage.Add(EGameEventMessage.Item, ItemData.Item);
-
-        GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameEnd, eventMessage);
+        base.Execute();
     }
 }
