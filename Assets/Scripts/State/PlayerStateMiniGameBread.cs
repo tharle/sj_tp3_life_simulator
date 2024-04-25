@@ -22,7 +22,9 @@ public class PlayerStateMiniGameBread : APlayerState
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-           m_Controller.EndMinigame();
+            m_Controller.EndMinigame();
+            // TODO: add corroutine pour faire l'animation de "get bread"
+            m_AttachedBehavior.ChangeState(EPlayerState.Run);
         }
     }
 

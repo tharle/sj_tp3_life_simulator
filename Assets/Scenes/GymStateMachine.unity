@@ -1354,6 +1354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ItemData: {fileID: 11400000, guid: 7052b5e91359ef64a93e477ad6e052de, type: 2}
+  m_Camera: {fileID: 0}
 --- !u!65 &644099532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4299,6 +4300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ItemData: {fileID: 11400000, guid: 7af6f1077ea32784781a20be69c77551, type: 2}
+  m_Camera: {fileID: 2021890570}
 --- !u!65 &1991384216
 BoxCollider:
   m_ObjectHideFlags: 0

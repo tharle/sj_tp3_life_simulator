@@ -18,10 +18,6 @@ public class PlayerStateRun : APlayerState
         m_EventSystem = GameEventSystem.Instance;
         m_MiniGameController = null;
         m_Inventory = new List<ItemData>();
-    }
-
-    public override void Enter()
-    {
         SubscribeAll();
     }
 
