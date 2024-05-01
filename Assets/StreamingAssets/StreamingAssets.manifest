@@ -1,0 +1,13 @@
+ManifestFileVersion: 0
+CRC: 2019669067
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: sfx
+      Dependencies: {}
+    Info_1:
+      Name: prefab_achivement
+      Dependencies: {}
+    Info_2:
+      Name: data
+      Dependencies: {}

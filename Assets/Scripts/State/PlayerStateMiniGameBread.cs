@@ -13,6 +13,7 @@ public class PlayerStateMiniGameBread : APlayerState
     public override void Enter()
     {
         Debug.Log("ENTER Mini Game Bread");
+        m_Controller.StartMinigame();
     }
 
     public override void Execute()

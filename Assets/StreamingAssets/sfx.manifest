@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 405564418
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8ff74239eb16d9f7b92a400696859ba9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/BundleAssets/Sounds/SFX/SFXConfirm.wav
+- Assets/BundleAssets/Sounds/SFX/SFXFireBall.wav
+- Assets/BundleAssets/Sounds/SFX/SFXText.wav
+- Assets/BundleAssets/Sounds/SFX/SFXWalkDirty.wav
+- Assets/BundleAssets/Sounds/SFX/SFXRunDirty.wav
+- Assets/BundleAssets/Sounds/SFX/SFXJump.wav
+- Assets/BundleAssets/Sounds/SFX/SFXCoin.wav
+- Assets/BundleAssets/Sounds/SFX/VFXVictory.wav
+- Assets/BundleAssets/Sounds/SFX/SFXDamaged.wav
+Dependencies: []

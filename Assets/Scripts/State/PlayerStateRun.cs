@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerStateRun : APlayerState
 {
     private int m_InventorySlotMax = 5;
-    private List<ItemData> m_Inventory;
+    private List<Item> m_Inventory;
     private PlayerMoveController m_PlayerMoveController;
     private AMiniGameController m_MiniGameController;
     private GameEventSystem m_EventSystem;
@@ -17,7 +17,7 @@ public class PlayerStateRun : APlayerState
         m_PlayerMoveController = attachedBehavior.GetComponent<PlayerMoveController>();
         m_EventSystem = GameEventSystem.Instance;
         m_MiniGameController = null;
-        m_Inventory = new List<ItemData>();
+        m_Inventory = new List<Item>();
         SubscribeAll();
     }
 
@@ -65,20 +65,13 @@ public class PlayerStateRun : APlayerState
 
     private void PlayMiniGame(AMiniGameController controller)
     {
-        switch (controller.MiniGameId)
-        {
-            case EMiniGame.Bread:
-                m_AttachedBehavior.ChangeState(EPlayerState.MiniGameBread);
-                break;
-            case EMiniGame.Ham:
-                m_AttachedBehavior.ChangeState(EPlayerState.MiniGameMeat);
-                break;
-        }
+        if (controller is MiniGameBreadController) m_AttachedBehavior.ChangeState(EPlayerState.MiniGameBread);
+        if (controller is MiniGameMeatController) m_AttachedBehavior.ChangeState(EPlayerState.MiniGameMeat);
     }
 
     private void OnMiniGameEnd(GameEventMessage message)
     {
-        if (message.Contains<ItemData>(EGameEventMessage.Item, out ItemData item) && !IsInventoryFull())
+        if (message.Contains<Item>(EGameEventMessage.Item, out Item item) && !IsInventoryFull())
         {
             m_Inventory.Add(item);
             m_EventSystem.TriggerEvent(EGameEvent.InventoryChanged, new GameEventMessage(EGameEventMessage.Inventory, m_Inventory));

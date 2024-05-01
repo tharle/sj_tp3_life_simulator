@@ -9,7 +9,7 @@ public class MiniGameMeatController : AMiniGameController
     public static MiniGameMeatController Instance { get { return m_Instance; } }
 
 
-    public MiniGameMeatController() : base(EMiniGame.Ham)
+    public MiniGameMeatController() : base(EItem.Meat)
     {
     }
 
@@ -23,9 +23,6 @@ public class MiniGameMeatController : AMiniGameController
 
     public override void Execute()
     {
-        GameEventMessage eventMessage = new GameEventMessage();
-        eventMessage.Add(EGameEventMessage.Item, ItemData.Item);
-
-        GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameEnd, eventMessage);
+        base.Execute();
     }
 }

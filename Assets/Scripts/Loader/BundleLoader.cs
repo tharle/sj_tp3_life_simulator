@@ -45,7 +45,7 @@ public class BundleLoader: MonoBehaviour
         return asset;
     }
 
-    private List<T> LoadAll<T>(string bundleName, bool IsCallUnload, params string[] assetNames) where T : UnityEngine.Object
+    public List<T> LoadAll<T>(string bundleName, bool IsCallUnload, params string[] assetNames) where T : UnityEngine.Object
     {
         AssetBundle localAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, bundleName));
         List<T> assets = new List<T>();

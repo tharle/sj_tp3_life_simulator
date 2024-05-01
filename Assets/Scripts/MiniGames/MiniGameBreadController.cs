@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class MiniGameBreadController : AMiniGameController
 {
-
+    #region Singleton
     private static MiniGameBreadController m_Instance;
     public static MiniGameBreadController Instance { get { return m_Instance; } }
+    #endregion
 
-    public MiniGameBreadController() : base(EMiniGame.Bread)
+    public MiniGameBreadController() : base(EItem.Bread)
     {
     }
 

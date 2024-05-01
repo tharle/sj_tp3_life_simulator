@@ -3,26 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EMiniGame
-{
-    Bread,
-    Ham
-}
-
 public abstract class AMiniGameController : MonoBehaviour
 {
-    [SerializeField] private ItemScriptableObject m_ItemData;
     [SerializeField] private CinemachineVirtualCamera m_Camera;
+
+    private EItem m_ItemId;
+    protected Item m_Item;
     private ICinemachineCamera m_CameraOld;
 
-    private EMiniGame m_Minigame;
-
-    public EMiniGame MiniGameId { get => m_Minigame; }
-    public ItemScriptableObject ItemData { get => m_ItemData; }
-
-    public AMiniGameController(EMiniGame miniGameId)
+    public AMiniGameController(EItem itemId)
     {
-        m_Minigame = miniGameId;
+        m_ItemId = itemId;
+    }
+
+    private void Start()
+    {
+        LoadItem(m_ItemId);
+    }
+
+    private void LoadItem(EItem itemId)
+    {
+        m_Item = ItemLoader.Instance.Get(itemId);
     }
 
     private CinemachineBrain GetCinemachineBrain()
@@ -48,13 +49,17 @@ public abstract class AMiniGameController : MonoBehaviour
         ResetCamera();
 
         GameEventMessage eventMessage = new GameEventMessage();
-        eventMessage.Add(EGameEventMessage.Item, ItemData.Item);
+        eventMessage.Add(EGameEventMessage.Item, m_Item);
 
         GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameEnd, eventMessage);
     }
 
-    public virtual void Execute()
+    public virtual void StartMinigame()
     {
         ChangeCamera();
+    }
+
+    public virtual void Execute()
+    {
     }
 }
