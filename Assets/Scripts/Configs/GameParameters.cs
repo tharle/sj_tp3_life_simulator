@@ -30,6 +30,12 @@ public class GameParameters
         public const string TRIGGER_CLOSE = "Close";
     }
 
+    public class AnimationCard
+    {
+        public const string TRIGGER_Card_To_Front = "CardToFront";
+        public const string TRIGGER_Card_To_Back = "CardToBack";
+    }
+
     public class BundleExtension
     {
         public static readonly string[] SFX = {"mp3", "wav"};

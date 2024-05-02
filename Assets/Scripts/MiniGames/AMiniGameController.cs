@@ -6,14 +6,13 @@ using UnityEngine;
 public abstract class AMiniGameController : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera m_Camera;
+    [SerializeField] private EItem m_ItemId;
 
-    private EItem m_ItemId;
     protected Item m_Item;
     private ICinemachineCamera m_CameraOld;
 
-    public AMiniGameController(EItem itemId)
+    public AMiniGameController()
     {
-        m_ItemId = itemId;
     }
 
     private void Start()

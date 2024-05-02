@@ -9,7 +9,7 @@ public class MiniGameMeatController : AMiniGameController
     public static MiniGameMeatController Instance { get { return m_Instance; } }
 
 
-    public MiniGameMeatController() : base(EItem.Meat)
+    public MiniGameMeatController() : base()
     {
     }
 
