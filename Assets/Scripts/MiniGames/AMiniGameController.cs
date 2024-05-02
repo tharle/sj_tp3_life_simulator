@@ -9,10 +9,12 @@ public abstract class AMiniGameController : MonoBehaviour
     [SerializeField] private EItem m_ItemId;
 
     protected Item m_Item;
+    protected bool m_IsWin;
     private ICinemachineCamera m_CameraOld;
 
     public AMiniGameController()
     {
+        m_IsWin = true;
     }
 
     private void Start()
@@ -48,7 +50,9 @@ public abstract class AMiniGameController : MonoBehaviour
         ResetCamera();
 
         GameEventMessage eventMessage = new GameEventMessage();
-        eventMessage.Add(EGameEventMessage.Item, m_Item);
+
+        // Se tu as perdu, il ne faut que ne pas envoyer l'item
+        if (m_IsWin) eventMessage.Add(EGameEventMessage.Item, m_Item);
 
         GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameEnd, eventMessage);
     }

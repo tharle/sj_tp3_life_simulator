@@ -35,6 +35,7 @@ public class CardController : MonoBehaviour
 
         AnimationBackToFront();
         m_IsClicked = true;
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameMemoryItemSelect, new GameEventMessage(EGameEventMessage.Item, m_Item));
     }
 
     private void AnimationBackToFront()

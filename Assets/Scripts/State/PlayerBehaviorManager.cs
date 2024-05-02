@@ -1,23 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public class PlayerBehaviorManager : MonoBehaviour
 {
     private APlayerState m_CurrentState;
     private Dictionary<EPlayerState, APlayerState> m_States;
+    
+    private List<Item> m_Inventory;
+    private int m_InventorySlotMax = 5;
 
     [SerializeField] EPlayerState m_CurrentStateId;
 
     
     void Start()
     {
+        m_Inventory = new List<Item>();
+
         m_States = new Dictionary<EPlayerState, APlayerState>();
         m_States.Add(EPlayerState.Win, new PlayerStateWin(this));
         m_States.Add(EPlayerState.PauseMenu, new PlayerStatePauseMenu(this));
         m_States.Add(EPlayerState.Run, new PlayerStateRun(this));
-        m_States.Add(EPlayerState.MiniGameBread, new PlayerStateMiniGameBread(this));
+        m_States.Add(EPlayerState.MiniGameMemory, new PlayerStateMiniGameMemory(this));
         m_States.Add(EPlayerState.MiniGameMeat, new PlayerStateMiniGameMeat(this));
 
         m_CurrentStateId = EPlayerState.Run;
@@ -46,4 +53,16 @@ public class PlayerBehaviorManager : MonoBehaviour
         m_CurrentState.Enter();
     }
 
+    public bool IsInventoryFull()
+    {
+        return m_Inventory.Count >= m_InventorySlotMax;
+    }
+
+    public void AddItem(Item item)
+    {
+        if (IsInventoryFull()) return;
+
+        m_Inventory.Add(item);
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.InventoryChanged, new GameEventMessage(EGameEventMessage.Inventory, m_Inventory));
+    }
 }

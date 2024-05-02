@@ -7,19 +7,19 @@ public enum EPlayerState
 {
     PauseMenu,
     Run,
-    MiniGameBread,
+    MiniGameMemory,
     MiniGameMeat,
     Win
 }
 public abstract class APlayerState
 {
-    protected PlayerBehaviorManager m_AttachedBehavior;
+    protected PlayerBehaviorManager m_PlayerBehavior;
     private EPlayerState m_StateId;
     public EPlayerState StateId { get => m_StateId; }
 
     public APlayerState(PlayerBehaviorManager attachedBehavior, EPlayerState stateId)
     {
-        m_AttachedBehavior = attachedBehavior;
+        m_PlayerBehavior = attachedBehavior;
         m_StateId = stateId;
     }
 

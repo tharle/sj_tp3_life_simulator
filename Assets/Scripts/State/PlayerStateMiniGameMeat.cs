@@ -18,7 +18,7 @@ public class PlayerStateMiniGameMeat : APlayerState
     public override void Execute()
     {
         m_Controller.Execute();
-        m_AttachedBehavior.ChangeState(EPlayerState.Run);
+        m_PlayerBehavior.ChangeState(EPlayerState.Run);
     }
 
     public override void Exit()

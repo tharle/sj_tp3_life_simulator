@@ -19,7 +19,7 @@ public class PlayerStatePauseMenu : APlayerState
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            m_AttachedBehavior.ChangeState(EPlayerState.PauseMenu);
+            m_PlayerBehavior.ChangeState(EPlayerState.PauseMenu);
         }
     }
 
