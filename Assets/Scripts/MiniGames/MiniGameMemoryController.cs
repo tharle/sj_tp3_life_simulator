@@ -49,17 +49,23 @@ public class MiniGameMemoryController : AMiniGameController
     public override void StartMinigame()
     {
         base.StartMinigame();
-        m_CardsPanel.SetActive(true);
-        foreach (CardController card in m_Cards)
-        {
-            card.ItemData = m_Item;
-        }
+        StartCoroutine(StartMinigameRoutine());
     }
 
     public override void EndMinigame()
     {
         m_CardsPanel.SetActive(false);
         base.EndMinigame();
+    }
+
+    private IEnumerator StartMinigameRoutine()
+    {
+        yield return new WaitForSeconds(2f);
+        m_CardsPanel.SetActive(true);
+        foreach (CardController card in m_Cards)
+        {
+            card.ItemData = m_Item;
+        }
     }
 
     private IEnumerator EndMinigameRoutine()
