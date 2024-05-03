@@ -12,15 +12,14 @@ public abstract class AMiniGameController : MonoBehaviour
     protected bool m_IsWin;
     private ICinemachineCamera m_CameraOld;
 
-    public AMiniGameController()
-    {
-        m_IsWin = true;
-    }
-
     private void Start()
     {
+        m_IsWin = true;
         LoadItem(m_ItemId);
+        AfterStart();
     }
+
+    protected virtual void AfterStart() {}
 
     private void LoadItem(EItem itemId)
     {

@@ -63,6 +63,6 @@ public class PlayerBehaviorManager : MonoBehaviour
         if (IsInventoryFull()) return;
 
         m_Inventory.Add(item);
-        GameEventSystem.Instance.TriggerEvent(EGameEvent.InventoryChanged, new GameEventMessage(EGameEventMessage.Inventory, m_Inventory));
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.InventoryChanged, new GameEventMessage(EGameEventMessage.ItemList, m_Inventory));
     }
 }

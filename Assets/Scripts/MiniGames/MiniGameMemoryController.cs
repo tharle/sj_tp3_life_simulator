@@ -10,14 +10,8 @@ public class MiniGameMemoryController : AMiniGameController
     public static MiniGameMemoryController Instance { get { return m_Instance; } }
     #endregion
 
-    [SerializeField] private List<CardController> m_Cards;
+    private List<Item> m_Itens;
     [SerializeField] private GameObject m_CardsPanel;
-
-    public MiniGameMemoryController() : base()
-    {
-        //m_CardsPanel?.SetActive(false);
-        
-    }
 
     private void Awake()
     {
@@ -28,19 +22,34 @@ public class MiniGameMemoryController : AMiniGameController
         SubscribeAll();
     }
 
+    protected override void AfterStart()
+    {
+        base.AfterStart();
+        m_CardsPanel.SetActive(false);
+
+        LoadItens();
+    }
     private void SubscribeAll()
     {
-        GameEventSystem.Instance.SubscribeTo(EGameEvent.MiniGameMemoryItemSelect, OnMiniGameMemoryItemSelect);
+        GameEventSystem.Instance.SubscribeTo(EGameEvent.MiniGameMemoryEnd, OnMiniGameMemoryEnd);
     }
 
-    private void OnMiniGameMemoryItemSelect(GameEventMessage message)
+    private void LoadItens()
+    {
+        // TODO add random itens and randomize the list
+        //m_Itens = ItemLoader.Instance.Get(m_)
+        m_Itens = new List<Item>() { m_Item };
+    }
+
+
+    private void OnMiniGameMemoryEnd(GameEventMessage message)
     {
         if(message.Contains<Item>(EGameEventMessage.Item, out Item item))
         {
             m_IsWin = m_Item.ItemId == item.ItemId;
 
-            if(m_IsWin) Debug.Log($"YOU GOT THE {item.Name}");
-            else Debug.Log($"NO! YOU MISS THE {item.Name}");
+            if(m_IsWin) Debug.Log($"YOU GOT THE {m_Item.Name}");
+            else Debug.Log($"NO! YOU MISS THE {m_Item.Name}");
         }
 
 
@@ -48,6 +57,7 @@ public class MiniGameMemoryController : AMiniGameController
     }
     public override void StartMinigame()
     {
+        m_CardsPanel.SetActive(true);
         base.StartMinigame();
         StartCoroutine(StartMinigameRoutine());
     }
@@ -60,12 +70,15 @@ public class MiniGameMemoryController : AMiniGameController
 
     private IEnumerator StartMinigameRoutine()
     {
-        yield return new WaitForSeconds(2f);
         m_CardsPanel.SetActive(true);
-        foreach (CardController card in m_Cards)
-        {
-            card.ItemData = m_Item;
-        }
+        yield return null;
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameMemoryStart, new GameEventMessage(EGameEventMessage.ItemList, m_Itens));
+        yield return new WaitForSeconds(0.1f);
+
+        yield return new WaitForSeconds(2f);
+
+
+
     }
 
     private IEnumerator EndMinigameRoutine()

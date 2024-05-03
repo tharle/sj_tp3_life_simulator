@@ -7,8 +7,9 @@ using UnityEngine;
 public enum EGameEvent
 {
     MiniGameEnd,
-    MiniGameMemoryItemSelect,
-    InventoryChanged
+    InventoryChanged,
+    MiniGameMemoryEnd,
+    MiniGameMemoryStart
 }
 
 public class GameEventSystem

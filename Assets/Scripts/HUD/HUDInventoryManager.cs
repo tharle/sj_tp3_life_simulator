@@ -31,7 +31,7 @@ public class HUDInventoryManager : MonoBehaviour
 
     private void OnInventoryChanged(GameEventMessage message)
     {
-        if(message.Contains<List<Item>>(EGameEventMessage.Inventory, out List<Item> items))
+        if(message.Contains<List<Item>>(EGameEventMessage.ItemList, out List<Item> items))
         {
             Refresh(items);
         }
