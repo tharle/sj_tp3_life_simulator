@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea68060a73484746a65e8acc5dab269, type: 3}
+  m_Name: CookingOil
+  m_EditorClassIdentifier: 
+  Value:
+    Name: Cooking Oil
+    Description: Cooking oil is a plant or animal liquid fat used in frying, baking,
+      and other types of cooking.
+    Sprite: {fileID: 21300000, guid: 705f6898fa0417842a5875341c47fdab, type: 3}
+    ItemId: 0
