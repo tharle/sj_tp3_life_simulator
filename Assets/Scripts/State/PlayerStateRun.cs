@@ -26,6 +26,7 @@ public class PlayerStateRun : APlayerState
         if (Input.GetKey(KeyCode.Space) && m_MiniGameController != null)
         {
             PlayMiniGame(m_MiniGameController);
+            return;
         }
 
         m_PlayerMoveController.Execute();
@@ -53,6 +54,7 @@ public class PlayerStateRun : APlayerState
 
     private void PlayMiniGame(AMiniGameController controller)
     {
+        m_PlayerBehavior.CurrentMiniGame = controller;
         if (controller is MiniGameMemoryController) m_PlayerBehavior.ChangeState(EPlayerState.MiniGameMemory);
         if (controller is MiniGameMeatController) m_PlayerBehavior.ChangeState(EPlayerState.MiniGameMeat);
     }

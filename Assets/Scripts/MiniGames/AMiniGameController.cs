@@ -26,7 +26,7 @@ public abstract class AMiniGameController : MonoBehaviour
         m_Item = ItemLoader.Instance.Get(itemId);
     }
 
-    private CinemachineBrain GetCinemachineBrain()
+    protected CinemachineBrain GetCinemachineBrain()
     {
         return CinemachineCore.Instance.GetActiveBrain(0);
     }
@@ -35,6 +35,7 @@ public abstract class AMiniGameController : MonoBehaviour
     {
         m_CameraOld = GetCinemachineBrain().ActiveVirtualCamera;
         m_CameraOld.Priority = 0;
+        m_Camera.Follow = transform;
         m_Camera.Priority = 1;
     }
 

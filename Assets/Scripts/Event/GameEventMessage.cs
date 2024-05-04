@@ -7,7 +7,8 @@ public enum EGameEventMessage
     Enter,
     Exit,
     Item,
-    ItemList
+    ItemList,
+    MiniGameTitle,
 }
 
 public class GameEventMessage

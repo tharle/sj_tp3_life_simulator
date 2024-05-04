@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,21 +6,12 @@ using UnityEngine;
 
 public class MiniGameMemoryController : AMiniGameController
 {
-    #region Singleton
-    private static MiniGameMemoryController m_Instance;
-    public static MiniGameMemoryController Instance { get { return m_Instance; } }
-    #endregion
 
     private List<Item> m_Itens;
     [SerializeField] private GameObject m_CardsPanel;
 
     private void Awake()
     {
-        if (m_Instance != null)
-            Destroy(gameObject);
-
-        m_Instance = this;
-        SubscribeAll();
     }
 
     protected override void AfterStart()
@@ -29,11 +21,6 @@ public class MiniGameMemoryController : AMiniGameController
 
         LoadItens();
     }
-    private void SubscribeAll()
-    {
-        GameEventSystem.Instance.SubscribeTo(EGameEvent.MiniGameMemoryEnd, OnMiniGameMemoryEnd);
-    }
-
     private void LoadItens()
     {
         // TODO add random itens and randomize the list
@@ -57,22 +44,39 @@ public class MiniGameMemoryController : AMiniGameController
     }
     public override void StartMinigame()
     {
-        m_CardsPanel.SetActive(true);
         base.StartMinigame();
+        SubscribeAll();
         StartCoroutine(StartMinigameRoutine());
     }
 
     public override void EndMinigame()
     {
+        UnsubscribeAll();
         m_CardsPanel.SetActive(false);
         base.EndMinigame();
     }
 
+    private void SubscribeAll()
+    {
+        GameEventSystem.Instance.SubscribeTo(EGameEvent.MiniGameMemoryEnd, OnMiniGameMemoryEnd);
+    }
+
+    private void UnsubscribeAll()
+    {
+        GameEventSystem.Instance.UnsubscribeFrom(EGameEvent.MiniGameMemoryEnd, OnMiniGameMemoryEnd);
+    }
+
+
     private IEnumerator StartMinigameRoutine()
     {
+        yield return new WaitForSeconds(2f);
+
         m_CardsPanel.SetActive(true);
         yield return null;
-        GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameMemoryStart, new GameEventMessage(EGameEventMessage.ItemList, m_Itens));
+        GameEventMessage messsage = new GameEventMessage(EGameEventMessage.ItemList, m_Itens);
+        messsage.Add(EGameEventMessage.Item, m_Item); // Pour le titre
+        messsage.Add(EGameEventMessage.MiniGameTitle, "Memory"); // Pour le titre
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameMemoryInitCard, messsage);
         yield return new WaitForSeconds(0.1f);
 
         yield return new WaitForSeconds(2f);

@@ -7,15 +7,17 @@ using UnityEngine.EventSystems;
 
 public class PlayerBehaviorManager : MonoBehaviour
 {
+    [SerializeField] EPlayerState m_CurrentStateId;
+
     private APlayerState m_CurrentState;
     private Dictionary<EPlayerState, APlayerState> m_States;
-    
+
     private List<Item> m_Inventory;
     private int m_InventorySlotMax = 5;
 
-    [SerializeField] EPlayerState m_CurrentStateId;
+    private AMiniGameController m_CurrentMiniGame;
+    public AMiniGameController CurrentMiniGame { get => m_CurrentMiniGame; set => m_CurrentMiniGame = value; }
 
-    
     void Start()
     {
         m_Inventory = new List<Item>();
@@ -49,6 +51,7 @@ public class PlayerBehaviorManager : MonoBehaviour
     public void ChangeState(EPlayerState stateId)
     {
         m_CurrentState.Exit();
+        m_CurrentStateId = stateId;
         m_CurrentState = m_States[stateId];
         m_CurrentState.Enter();
     }

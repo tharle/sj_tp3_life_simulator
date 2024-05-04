@@ -5,27 +5,25 @@ using UnityEngine.EventSystems;
 
 public class PlayerStateMiniGameMemory : APlayerState
 {
-    MiniGameMemoryController m_Controller;
     public PlayerStateMiniGameMemory(PlayerBehaviorManager attachedBehavior) : base(attachedBehavior, EPlayerState.MiniGameMemory)
     {
-        m_Controller = MiniGameMemoryController.Instance;
     }
 
     public override void Enter()
     {
         Debug.Log("ENTER Mini Game Memory");
-        m_Controller.StartMinigame();
+        m_PlayerBehavior.CurrentMiniGame.StartMinigame();
         SubscribeAll();
     }
 
     public override void Execute()
     {
-        m_Controller.Execute();
+        m_PlayerBehavior.CurrentMiniGame.Execute();
         //m_AttachedBehavior.ChangeState(EPlayerState.Run);
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            m_Controller.EndMinigame();
+            m_PlayerBehavior.CurrentMiniGame.EndMinigame();
             // TODO: add corroutine pour faire l'animation de "get bread"
             m_PlayerBehavior.ChangeState(EPlayerState.Run);
         }

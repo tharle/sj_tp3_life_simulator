@@ -35,7 +35,7 @@ public class CardController : MonoBehaviour
 
     private void SubscribeAll()
     {
-        GameEventSystem.Instance.SubscribeTo(EGameEvent.MiniGameMemoryStart, OnStartMiniGame);
+        GameEventSystem.Instance.SubscribeTo(EGameEvent.MiniGameMemoryInitCard, OnStartMiniGame);
     }
 
     private void OnStartMiniGame(GameEventMessage message)
@@ -81,5 +81,6 @@ public class CardController : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         AnimationFrontToBack();
+        m_IsClicked = false;
     }
 }

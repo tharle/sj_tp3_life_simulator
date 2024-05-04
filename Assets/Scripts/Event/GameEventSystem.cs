@@ -8,8 +8,9 @@ public enum EGameEvent
 {
     MiniGameEnd,
     InventoryChanged,
+    MiniGameMemoryStart,
     MiniGameMemoryEnd,
-    MiniGameMemoryStart
+    MiniGameMemoryInitCard
 }
 
 public class GameEventSystem
