@@ -16,4 +16,5 @@ MonoBehaviour:
     Name: Cabbage
     Description: It's salada.
     Sprite: {fileID: 21300000, guid: 50407298910656e4a88d82030768566a, type: 3}
-    ItemId: 0
+    Price: 4.4
+    IsRefrigerator: 1

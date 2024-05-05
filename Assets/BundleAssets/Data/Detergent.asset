@@ -17,4 +17,6 @@ MonoBehaviour:
     Description: A detergent is a surfactant or a mixture of surfactants with cleansing
       properties when in dilute solutions.
     Sprite: {fileID: 21300000, guid: 4fef3d0a54406cf45a56dafe9dfe6d48, type: 3}
+    Id: 24
     ItemId: 0
+    Price: 15.99

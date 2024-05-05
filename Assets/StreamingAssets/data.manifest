@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1724111753
+CRC: 2503653874
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5a5dd5bc8fcbb6963029befd88c310ed
+    Hash: cb4f7067c3da08f256882a36ea1a84d5
   TypeTreeHash:
     serializedVersion: 2
-    Hash: d3bc6c0e7ffc54467eaa346f0506281c
+    Hash: 1c3e9669c4e39ee78ecefa48db454e3c
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -21,7 +21,65 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
   ClassName: Item
 Assets:
-- Assets/BundleAssets/Data/Bread.asset
+- Assets/BundleAssets/Data/Cleaning Brush.asset
+- Assets/BundleAssets/Data/Hand Sanitiser.asset
+- Assets/BundleAssets/Data/Dishwashing Liquid.asset
+- Assets/BundleAssets/Data/Banana.asset
+- Assets/BundleAssets/Data/Ketchup.asset
 - Assets/BundleAssets/Data/Eggs.asset
+- Assets/BundleAssets/Data/Cutting Board.asset
+- Assets/BundleAssets/Data/Breakfast Cereal.asset
+- Assets/BundleAssets/Data/Green Apple.asset
+- Assets/BundleAssets/Data/Filet Mignon.asset
+- Assets/BundleAssets/Data/BBQ Sauce.asset
+- Assets/BundleAssets/Data/Grape Soda.asset
+- Assets/BundleAssets/Data/Hot Cocoa Mix.asset
+- Assets/BundleAssets/Data/Energy Bar.asset
+- Assets/BundleAssets/Data/Bandage Box.asset
+- Assets/BundleAssets/Data/Light Bulb.asset
+- Assets/BundleAssets/Data/Mushroom.asset
+- Assets/BundleAssets/Data/Glue.asset
+- Assets/BundleAssets/Data/BellPepper.asset
+- Assets/BundleAssets/Data/Baking Powder.asset
+- Assets/BundleAssets/Data/Frying Pan.asset
+- Assets/BundleAssets/Data/Candy Bar.asset
+- Assets/BundleAssets/Data/Flour.asset
+- Assets/BundleAssets/Data/Cabbage.asset
+- Assets/BundleAssets/Data/All-purpose Cleaners.asset
+- Assets/BundleAssets/Data/Cleaning Gloves.asset
+- Assets/BundleAssets/Data/Peanut Butter.asset
+- Assets/BundleAssets/Data/Lays Magic Masala.asset
+- Assets/BundleAssets/Data/Batteries.asset
+- Assets/BundleAssets/Data/Butter.asset
+- Assets/BundleAssets/Data/Detergent.asset
+- Assets/BundleAssets/Data/Lays Original.asset
+- Assets/BundleAssets/Data/Olive Oil.asset
+- Assets/BundleAssets/Data/Bacon.asset
+- Assets/BundleAssets/Data/American Cheese.asset
+- Assets/BundleAssets/Data/Mustard.asset
+- Assets/BundleAssets/Data/Bread.asset
+- Assets/BundleAssets/Data/Plain Yogurt.asset
+- Assets/BundleAssets/Data/BubbleGum.asset
+- Assets/BundleAssets/Data/Power Strip.asset
+- Assets/BundleAssets/Data/Jam Strawberry.asset
+- Assets/BundleAssets/Data/Eraser.asset
+- Assets/BundleAssets/Data/Cookies.asset
+- Assets/BundleAssets/Data/Milk Gallon.asset
+- Assets/BundleAssets/Data/Dry Dog Food.asset
+- Assets/BundleAssets/Data/Cooking Oil.asset
+- Assets/BundleAssets/Data/Fruit Cocktail Can.asset
+- Assets/BundleAssets/Data/Fish.asset
+- Assets/BundleAssets/Data/Red Apple.asset
+- Assets/BundleAssets/Data/Milk Pack.asset
+- Assets/BundleAssets/Data/Body Lotion.asset
+- Assets/BundleAssets/Data/Orange Juice.asset
 - Assets/BundleAssets/Data/Meat.asset
+- Assets/BundleAssets/Data/Coffee Bag.asset
+- Assets/BundleAssets/Data/Green Grape.asset
+- Assets/BundleAssets/Data/Aluminum Foil.asset
+- Assets/BundleAssets/Data/Lays Salt and Vinegar.asset
+- Assets/BundleAssets/Data/Marshmallow.asset
+- Assets/BundleAssets/Data/Milk Bottle.asset
+- Assets/BundleAssets/Data/Potato.asset
+- Assets/BundleAssets/Data/Chocolate.asset
 Dependencies: []

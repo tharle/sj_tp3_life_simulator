@@ -16,4 +16,6 @@ MonoBehaviour:
     Name: Cookies
     Description: 300g of pure sugar and chocolate.
     Sprite: {fileID: 21300000, guid: a646fc3e74aa0dd458411ca31a572537, type: 3}
+    Id: 21
     ItemId: 0
+    Price: 5

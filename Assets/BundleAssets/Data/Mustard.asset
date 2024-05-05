@@ -17,4 +17,6 @@ MonoBehaviour:
     Description: Mustard is commonly paired with meats, vegetables and cheeses, especially
       as a condiment for sandwiches, hamburgers, and hot dogs.
     Sprite: {fileID: 21300000, guid: 022292b8eef2f4649ae3ebc9900d3206, type: 3}
+    Id: 53
     ItemId: 0
+    Price: 2

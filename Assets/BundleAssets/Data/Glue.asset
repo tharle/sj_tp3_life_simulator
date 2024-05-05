@@ -17,4 +17,6 @@ MonoBehaviour:
     Description: Glue is any non-metallic substance applied to one or both surfaces
       of two separate items that binds them together and resists their separation.
     Sprite: {fileID: 21300000, guid: de27d0c14c69c0b4db90bb6c70596e43, type: 3}
+    Id: 35
     ItemId: 0
+    Price: 2.99

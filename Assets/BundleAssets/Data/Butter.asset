@@ -17,4 +17,5 @@ MonoBehaviour:
     Description: Butter is a dairy product made from the fat and protein components
       of churned cream.
     Sprite: {fileID: 21300000, guid: be31f4d91eaeccb44a9346229b17b698, type: 3}
-    ItemId: 0
+    Price: 6.49
+    IsRefrigerator: 1

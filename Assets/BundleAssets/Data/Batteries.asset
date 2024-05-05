@@ -18,4 +18,6 @@ MonoBehaviour:
       one or more electrochemical cells with external connections for powering electrical
       devices.
     Sprite: {fileID: 21300000, guid: 688d485a954ad554990823344aa6b1a1, type: 3}
+    Id: 7
     ItemId: 0
+    Price: 3

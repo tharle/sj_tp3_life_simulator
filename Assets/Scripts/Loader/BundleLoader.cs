@@ -56,11 +56,19 @@ public class BundleLoader: MonoBehaviour
             return assets;
         }
 
-        foreach(string assetName in assetNames)
+        if(assetNames.Length > 0)
         {
-            T asset = localAssetBundle.LoadAsset<T>(assetName);
-            assets.Add(asset);
+            foreach(string assetName in assetNames)
+            {
+                T asset = localAssetBundle.LoadAsset<T>(assetName);
+                assets.Add(asset);
+            }
+
+        } else
+        {
+            assets = new List<T>(localAssetBundle.LoadAllAssets<T>());
         }
+
 
         if(IsCallUnload) localAssetBundle.Unload(false);
 

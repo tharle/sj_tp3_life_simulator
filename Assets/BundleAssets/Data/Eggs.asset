@@ -16,4 +16,6 @@ MonoBehaviour:
     Name: Eggs
     Description: It's 12 eggs in a box!
     Sprite: {fileID: 21300000, guid: 64c26efc80c627e4b8f17f86b0941c13, type: 3}
+    Id: 27
     ItemId: 2
+    Price: 4.04

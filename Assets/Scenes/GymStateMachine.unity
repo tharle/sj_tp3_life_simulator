@@ -461,6 +461,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
       value: Card31
@@ -1049,6 +1053,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
       value: Card21
@@ -1174,6 +1182,10 @@ PrefabInstance:
     - target: {fileID: 5124515208190289908, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
@@ -1512,6 +1524,10 @@ PrefabInstance:
     - target: {fileID: 5124515208190289908, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
@@ -2328,7 +2344,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 0}
-  m_ItemId: 1
 --- !u!65 &644099532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2722,6 +2737,10 @@ PrefabInstance:
     - target: {fileID: 5124515208190289908, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
@@ -4151,6 +4170,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
       value: Card23
@@ -4406,9 +4429,17 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
       value: Card34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648030888011309658, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9140062932738320233, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_fontSize
@@ -4570,6 +4601,10 @@ PrefabInstance:
     - target: {fileID: 5124515208190289908, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
@@ -5073,6 +5108,10 @@ PrefabInstance:
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
       value: Card44
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648030888011309658, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9140062932738320233, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_fontSize
@@ -5600,6 +5639,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
       value: Card12
@@ -5726,6 +5769,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
       value: Card33
@@ -5851,6 +5898,10 @@ PrefabInstance:
     - target: {fileID: 5124515208190289908, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
@@ -6364,6 +6415,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
       value: Card14
@@ -6714,6 +6769,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
       value: Card24
@@ -7043,7 +7102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 2021890570}
-  m_ItemId: 0
   m_CardsPanel: {fileID: 2030238266}
 --- !u!65 &1794944382
 BoxCollider:
@@ -7182,7 +7240,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.9
+  m_fontSize: 22.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7420,6 +7478,10 @@ PrefabInstance:
     - target: {fileID: 5124515208190289908, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413317265812690592, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
+      propertyPath: m_Index
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7502478939392302084, guid: e2e09ba3779b28042a6c4ae7f717070f, type: 3}
       propertyPath: m_Name
@@ -7707,7 +7769,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 2021890570}
-  m_ItemId: 2
   m_CardsPanel: {fileID: 2030238266}
 --- !u!65 &1991384216
 BoxCollider:
@@ -8109,7 +8170,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.25
+  m_fontSize: 26.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

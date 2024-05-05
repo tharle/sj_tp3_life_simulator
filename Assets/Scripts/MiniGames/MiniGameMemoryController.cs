@@ -1,8 +1,9 @@
 using Cinemachine;
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class MiniGameMemoryController : AMiniGameController
 {
@@ -25,7 +26,9 @@ public class MiniGameMemoryController : AMiniGameController
     {
         // TODO add random itens and randomize the list
         //m_Itens = ItemLoader.Instance.Get(m_)
-        m_Itens = new List<Item>() { m_Item };
+        m_Itens = ItemLoader.Instance.GetAll(false);
+        m_Itens = m_Itens.OrderBy(item => Random.Range(0, m_Itens.Count)).ToList<Item>();
+        m_Item = m_Itens[Random.Range(0, 16)]; // Qnté des slots
     }
 
 
@@ -33,7 +36,7 @@ public class MiniGameMemoryController : AMiniGameController
     {
         if(message.Contains<Item>(EGameEventMessage.Item, out Item item))
         {
-            m_IsWin = m_Item.ItemId == item.ItemId;
+            m_IsWin = m_Item.Name == item.Name;
 
             if(m_IsWin) Debug.Log($"YOU GOT THE {m_Item.Name}");
             else Debug.Log($"NO! YOU MISS THE {m_Item.Name}");

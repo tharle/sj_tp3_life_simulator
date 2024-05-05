@@ -16,4 +16,6 @@ MonoBehaviour:
     Name: Potato
     Description: Potato from ilse orleans.
     Sprite: {fileID: 21300000, guid: 039d6a00f02f34647948d48ec6946bd0, type: 3}
+    Id: 58
     ItemId: 0
+    Price: 4.99

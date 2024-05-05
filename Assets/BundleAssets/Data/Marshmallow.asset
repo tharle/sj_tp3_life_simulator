@@ -17,4 +17,6 @@ MonoBehaviour:
     Description: Marshmallow is a confectionery made from sugar, water and gelatin
       whipped to a solid-but-soft consistency.
     Sprite: {fileID: 21300000, guid: 2857f312cb1985945ade3b190f007726, type: 3}
+    Id: 47
     ItemId: 0
+    Price: 2.79

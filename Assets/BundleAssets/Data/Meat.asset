@@ -16,4 +16,5 @@ MonoBehaviour:
     Name: Meat
     Description: Meat in steak from canedians cows
     Sprite: {fileID: 21300000, guid: de34cb4e643fff249bf4b2812a8034c5, type: 3}
-    ItemId: 1
+    Price: 13.09
+    IsRefrigerator: 1

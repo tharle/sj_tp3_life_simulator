@@ -16,4 +16,6 @@ MonoBehaviour:
     Name: Eraser
     Description: For erase all yours problems.
     Sprite: {fileID: 21300000, guid: 87c41862cb70f9a45ba399db35e60e4c, type: 3}
+    Id: 29
     ItemId: 0
+    Price: 3.38

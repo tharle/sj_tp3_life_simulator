@@ -1,6 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ItemLoader
@@ -21,15 +20,15 @@ public class ItemLoader
     }
     #endregion
 
-    Dictionary<EItem, ItemScriptableObject> m_Items;
+    private Dictionary<string, ItemScriptableObject> m_Items; // Name/ItemScriptableObject
 
     public ItemLoader()
     {
-        m_Items = new Dictionary<EItem, ItemScriptableObject>();
+        m_Items = new Dictionary<string, ItemScriptableObject>();
         LoadAll();
     }
 
-    private string[] GetAssetsNames()
+    /*private string[] GetAssetsNames()
     {
         string[] assetNames = {
             nameof(EItem.Bread),
@@ -38,30 +37,44 @@ public class ItemLoader
         };
 
         return assetNames;
-    }
+    }*/
 
     public void LoadAll()
     {
-        string[] assetNames = GetAssetsNames();
-        List<ItemScriptableObject> items = BundleLoader.Instance.LoadAll<ItemScriptableObject>(GameParameters.BundleNames.SCRIT_OBJETS, true, assetNames);
+        //string[] assetNames = GetAssetsNames();
+        List<ItemScriptableObject> items = BundleLoader.Instance.LoadAll<ItemScriptableObject>(GameParameters.BundleNames.SCRIT_OBJETS, true);
         foreach (ItemScriptableObject itemData in items)
         {
-            EItem itemId = itemData.Value.ItemId;
+            //EItem itemId = itemData.Value.ItemId;
 
-            if (!m_Items.ContainsKey(itemId)) m_Items.Add(itemId, itemData);
-            else m_Items[itemId] = itemData;
+            if (!m_Items.ContainsKey(itemData.name)) m_Items.Add(itemData.name, itemData);
+            else m_Items[itemData.name] = itemData;
         }
     }
 
-    public Item Get(EItem itemId)
+    public Item Get(string itemName)
     {
-        if (!m_Items.ContainsKey(itemId))
+        if (!m_Items.ContainsKey(itemName))
         {
-            string assetName = Enum.GetName(typeof(EItem), itemId);
-            ItemScriptableObject itemData = BundleLoader.Instance.Load<ItemScriptableObject>(GameParameters.BundleNames.SCRIT_OBJETS, assetName);
-            m_Items.Add(itemId, itemData);
+            ItemScriptableObject itemData = BundleLoader.Instance.Load<ItemScriptableObject>(GameParameters.BundleNames.SCRIT_OBJETS, itemName);
+            m_Items.Add(itemName, itemData);
         }
 
-        return m_Items[itemId].Value;
+        return m_Items[itemName].Value;
+    }
+
+    public List<Item> GetAll(bool IsRefrigerator)
+    {
+        if(m_Items.Count <= 0) LoadAll();
+
+        List<Item> result = new List<Item>();
+
+        foreach (ItemScriptableObject itemData in m_Items.Values)
+        {
+            Item item = itemData.Value;
+            if (item.IsRefrigerator == IsRefrigerator) result.Add(item);
+        }
+
+        return result;
     }
 }

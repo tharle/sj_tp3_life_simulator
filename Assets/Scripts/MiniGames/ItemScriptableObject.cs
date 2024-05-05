@@ -3,20 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EItem
-{
-    Bread,
-    Meat,
-    Eggs
-}
-
 [Serializable]
 public struct Item
 {
     public string Name;
     public string Description;
     public Sprite Sprite;
-    public EItem ItemId;
+    public float Price;
+    public bool IsRefrigerator;
 }
 
 [CreateAssetMenu]

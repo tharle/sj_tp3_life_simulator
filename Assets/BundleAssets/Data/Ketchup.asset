@@ -16,4 +16,6 @@ MonoBehaviour:
     Name: Ketchup
     Description: 'Ketchup is a table condiment with a sweet and sour flavor. '
     Sprite: {fileID: 21300000, guid: 82f365a0449d14f4a94eee4730fdf125, type: 3}
+    Id: 42
     ItemId: 0
+    Price: 4.99

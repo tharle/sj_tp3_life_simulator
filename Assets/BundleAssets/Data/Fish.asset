@@ -16,4 +16,5 @@ MonoBehaviour:
     Name: Fish
     Description: '3 or 4 steak of local fish. Maybe it''s fresh, maybe not. '
     Sprite: {fileID: 21300000, guid: 3ff7e7d999ba90548b59fecd7bb928da, type: 3}
-    ItemId: 0
+    Price: 15.49
+    IsRefrigerator: 1

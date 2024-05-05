@@ -16,4 +16,5 @@ MonoBehaviour:
     Name: Mushroom
     Description: ' it''s the fleshy, fruiting, spore-bearing body of a fungu'
     Sprite: {fileID: 21300000, guid: 042071a85545e7b428885ef4676aeb30, type: 3}
-    ItemId: 0
+    Price: 5
+    IsRefrigerator: 1

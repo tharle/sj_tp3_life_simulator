@@ -16,4 +16,6 @@ MonoBehaviour:
     Name: Bread
     Description: Nice and good packet of sliced bread.
     Sprite: {fileID: 21300000, guid: 514782603afb83a44bdb6e0b0c1d88ca, type: 3}
+    Id: 11
     ItemId: 0
+    Price: 3.99

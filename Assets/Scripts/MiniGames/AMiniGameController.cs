@@ -6,7 +6,6 @@ using UnityEngine;
 public abstract class AMiniGameController : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera m_Camera;
-    [SerializeField] private EItem m_ItemId;
 
     protected Item m_Item;
     protected bool m_IsWin;
@@ -15,16 +14,10 @@ public abstract class AMiniGameController : MonoBehaviour
     private void Start()
     {
         m_IsWin = true;
-        LoadItem(m_ItemId);
         AfterStart();
     }
 
     protected virtual void AfterStart() {}
-
-    private void LoadItem(EItem itemId)
-    {
-        m_Item = ItemLoader.Instance.Get(itemId);
-    }
 
     protected CinemachineBrain GetCinemachineBrain()
     {

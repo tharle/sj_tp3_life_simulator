@@ -17,4 +17,6 @@ MonoBehaviour:
     Description: Flour is a powder made by grinding raw grains, roots, beans, nuts,
       or seeds. Flours are used to make many different foods.
     Sprite: {fileID: 21300000, guid: 69b7d65e2d8cb2144a47814e53000596, type: 3}
+    Id: 32
     ItemId: 0
+    Price: 5.99

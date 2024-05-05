@@ -79,7 +79,7 @@ public class CardController : MonoBehaviour
         AnimationBackToFront();
         m_CardFrontImage.sprite = m_Item.Sprite;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         AnimationFrontToBack();
         m_IsClicked = false;
     }
