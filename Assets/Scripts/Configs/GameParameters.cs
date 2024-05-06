@@ -10,6 +10,19 @@ public class GameParameters
         public const char BREAK_LINE = '|';
     }
 
+    public class AnimationCard
+    {
+        public const string TRIGGER_Card_To_Front = "CardToFront";
+        public const string TRIGGER_Card_To_Back = "CardToBack";
+    }
+
+    public class AnimationEnemy
+    {
+        public const string TRIGGER_DIE = "die";
+        public const string TRIGGER_ATTACK = "attack";
+        public const string FLOAT_VELOCITY = "velocity";
+    }
+
     public class AnimationPlayer
     {
         public const string FLOAT_VELOCITY = "velocity";
@@ -20,23 +33,10 @@ public class GameParameters
         public const string TRIGGER_FISHING = "fishing";
     }
 
-    public class AnimationEnemy
+    public class AnimationScenario
     {
-        public const string TRIGGER_DIE = "die";
-        public const string TRIGGER_ATTACK = "attack";
-        public const string FLOAT_VELOCITY = "velocity";
-    }
-
-    public class AnimationMenu
-    {
-        public const string TRIGGER_OPEN = "Open";
-        public const string TRIGGER_CLOSE = "Close";
-    }
-
-    public class AnimationCard
-    {
-        public const string TRIGGER_Card_To_Front = "CardToFront";
-        public const string TRIGGER_Card_To_Back = "CardToBack";
+        public const string TRIGGER_AUTOMATIC_DOOR_OPEN = "AutomaticDoorOpen";
+        public const string TRIGGER_AUTOMATIC_DOOR_CLOSE = "AutomaticDoorClose";
     }
 
     public class BundleExtension

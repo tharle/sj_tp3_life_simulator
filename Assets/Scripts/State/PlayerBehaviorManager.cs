@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class PlayerBehaviorManager : MonoBehaviour
 {
-    [SerializeField] EPlayerState m_CurrentStateId;
+    [SerializeField] private EPlayerState m_CurrentStateId;
 
     private APlayerState m_CurrentState;
     private Dictionary<EPlayerState, APlayerState> m_States;

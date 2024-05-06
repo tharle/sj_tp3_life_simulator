@@ -58,6 +58,7 @@ public class PlayerStateRun : APlayerState
         if (miniGameController != null)
         {
             m_MiniGameController = miniGameController;
+            m_MiniGameController.gameObject.GetComponentInParent<MeshRenderer>().material.color = new Color(44, 250, 31 );
         }
     }
 
@@ -67,6 +68,7 @@ public class PlayerStateRun : APlayerState
 
         if (miniGameController != null)
         {
+            m_MiniGameController.gameObject.GetComponentInParent<MeshRenderer>().material.color = Color.white;
             m_MiniGameController = null;
         }
     }
