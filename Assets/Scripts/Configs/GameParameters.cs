@@ -13,8 +13,11 @@ public class GameParameters
     public class AnimationPlayer
     {
         public const string FLOAT_VELOCITY = "velocity";
-        public const string TRIGGER_SHOOT = "shoot";
         public const string TRIGGER_INTERACT = "interact";
+        public const string TRIGGER_IDLE = "idle";
+        public const string TRIGGER_LOSE = "lose";
+        public const string TRIGGER_WIN = "win";
+        public const string TRIGGER_FISHING = "fishing";
     }
 
     public class AnimationEnemy

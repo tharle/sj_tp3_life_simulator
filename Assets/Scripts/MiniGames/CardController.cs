@@ -14,7 +14,7 @@ public class CardController : MonoBehaviour
     private Animator m_Animator;
 
     private Item m_Item;
-    private bool m_IsClicked;
+    private bool m_IsBlockClick;
 
     private void Start()
     {
@@ -50,10 +50,10 @@ public class CardController : MonoBehaviour
 
     public void OnClickCard()
     {
-        if (m_IsClicked) return;
+        if (m_IsBlockClick) return;
 
         AnimationBackToFront();
-        m_IsClicked = true;
+        m_IsBlockClick = true;
         GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameMemoryEnd, new GameEventMessage(EGameEventMessage.Item, m_Item));
     }
 
@@ -75,12 +75,14 @@ public class CardController : MonoBehaviour
 
     private IEnumerator ChangeCardSprite()
     {
+        m_IsBlockClick = true;
         yield return null;
         AnimationBackToFront();
         m_CardFrontImage.sprite = m_Item.Sprite;
 
         yield return new WaitForSeconds(1.5f);
         AnimationFrontToBack();
-        m_IsClicked = false;
+        yield return new WaitForSeconds(0.5f);
+        m_IsBlockClick = false;
     }
 }

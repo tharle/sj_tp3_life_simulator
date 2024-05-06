@@ -14,19 +14,38 @@ public class PlayerStateRun : APlayerState
         m_MiniGameController = null;
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        PlayerAnimation.Instance.Interract();
+    }
+
     public override void Execute()
     {
         Debug.Log("IS GAME");
+        if (m_PlayerBehavior.IsInventoryFull())
+        {
+            m_PlayerBehavior.ChangeState(EPlayerState.Win);
+            return;
+        }
+
+
         if (Input.GetKeyDown(GameParameters.InputName.GAME_MENU))
         {
             m_PlayerBehavior.ChangeState(EPlayerState.PauseMenu);
             return;
         }
 
-        if (Input.GetKey(KeyCode.Space) && m_MiniGameController != null)
+        if (Input.GetKeyDown(KeyCode.Space) && m_MiniGameController != null)
         {
+            PlayerAnimation.Instance.Interract();
             PlayMiniGame(m_MiniGameController);
             return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            PlayerAnimation.Instance.Fishing();
         }
 
         m_PlayerMoveController.Execute();
@@ -55,7 +74,6 @@ public class PlayerStateRun : APlayerState
     private void PlayMiniGame(AMiniGameController controller)
     {
         m_PlayerBehavior.CurrentMiniGame = controller;
-        if (controller is MiniGameMemoryController) m_PlayerBehavior.ChangeState(EPlayerState.MiniGameMemory);
-        if (controller is MiniGameMeatController) m_PlayerBehavior.ChangeState(EPlayerState.MiniGameMeat);
+        m_PlayerBehavior.ChangeState(EPlayerState.MiniGame);
     }
 }

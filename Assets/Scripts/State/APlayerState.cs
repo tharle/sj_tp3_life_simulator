@@ -7,7 +7,7 @@ public enum EPlayerState
 {
     PauseMenu,
     Run,
-    MiniGameMemory,
+    MiniGame,
     MiniGameMeat,
     Win
 }

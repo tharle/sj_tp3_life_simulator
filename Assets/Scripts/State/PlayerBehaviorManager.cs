@@ -13,6 +13,7 @@ public class PlayerBehaviorManager : MonoBehaviour
     private Dictionary<EPlayerState, APlayerState> m_States;
 
     private List<Item> m_Inventory;
+    public List<Item> Inventory { get { return m_Inventory; } }
     private int m_InventorySlotMax = 5;
 
     private AMiniGameController m_CurrentMiniGame;
@@ -26,7 +27,7 @@ public class PlayerBehaviorManager : MonoBehaviour
         m_States.Add(EPlayerState.Win, new PlayerStateWin(this));
         m_States.Add(EPlayerState.PauseMenu, new PlayerStatePauseMenu(this));
         m_States.Add(EPlayerState.Run, new PlayerStateRun(this));
-        m_States.Add(EPlayerState.MiniGameMemory, new PlayerStateMiniGameMemory(this));
+        m_States.Add(EPlayerState.MiniGame, new PlayerStateMiniGame(this));
         m_States.Add(EPlayerState.MiniGameMeat, new PlayerStateMiniGameMeat(this));
 
         m_CurrentStateId = EPlayerState.Run;

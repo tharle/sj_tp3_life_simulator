@@ -15,11 +15,9 @@ public class PlayerStateWin : APlayerState
 
     public override void Execute()
     {
+        // TODO change camera à la caisse
         Debug.Log("IS WIN");
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            m_PlayerBehavior.ChangeState(EPlayerState.MiniGameMemory);
-        }
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.GameEnd, new GameEventMessage(EGameEventMessage.ItemList, m_PlayerBehavior.Inventory));
     }
 
     public override void Exit()

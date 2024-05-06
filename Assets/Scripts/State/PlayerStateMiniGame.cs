@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerStateMiniGameMemory : APlayerState
+public class PlayerStateMiniGame : APlayerState
 {
-    public PlayerStateMiniGameMemory(PlayerBehaviorManager attachedBehavior) : base(attachedBehavior, EPlayerState.MiniGameMemory)
+    public PlayerStateMiniGame(PlayerBehaviorManager attachedBehavior) : base(attachedBehavior, EPlayerState.MiniGame)
     {
     }
 
@@ -19,12 +19,9 @@ public class PlayerStateMiniGameMemory : APlayerState
     public override void Execute()
     {
         m_PlayerBehavior.CurrentMiniGame.Execute();
-        //m_AttachedBehavior.ChangeState(EPlayerState.Run);
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            m_PlayerBehavior.CurrentMiniGame.EndMinigame();
-            // TODO: add corroutine pour faire l'animation de "get bread"
             m_PlayerBehavior.ChangeState(EPlayerState.Run);
         }
     }

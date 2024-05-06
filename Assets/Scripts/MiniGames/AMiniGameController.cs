@@ -19,7 +19,7 @@ public abstract class AMiniGameController : MonoBehaviour
 
     protected virtual void AfterStart() {}
 
-    protected CinemachineBrain GetCinemachineBrain()
+    private CinemachineBrain GetCinemachineBrain()
     {
         return CinemachineCore.Instance.GetActiveBrain(0);
     }

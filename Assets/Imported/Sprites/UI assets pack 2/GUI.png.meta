@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6e9aa9851857ad640b4c2c0e656bdd3a
+guid: 197ce80cf2f3bc440bbf98c5a97f4e55
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,169 +110,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: paper_01
+      name: inventory_background
       rect:
         serializedVersion: 2
-        x: 192
-        y: 193
+        x: 0
+        y: 176
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 8, z: 8, w: 9}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5ecd73ad44f5e94e8f8fc0ce8174da9
+      internalID: 601972483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventory_slot
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 176
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57ad45a3cd6317f42b7e3c5acd2af8f1
+      internalID: 1654487523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_0
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 208
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 5, z: 4, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c39b30aae01da9448c5cf4a856be9f1
+      internalID: 2088076945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_1
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 192
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc5e24ad65176a429ceb9069103ea3f
+      internalID: -377450027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_2
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 177
         width: 32
         height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 12, y: 3, z: 12, w: 4}
+      border: {x: 4, y: 4, z: 4, w: 4}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2641362a92d702f449a7f86e78d2279b
-      internalID: -99052992
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: paper_02
-      rect:
-        serializedVersion: 2
-        x: 769
-        y: 368
-        width: 46
-        height: 47
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 4, z: 3, w: 3}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 68bfa0ff08c63bc4f9b4de09ccf8d45f
-      internalID: 986089497
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: paper_03
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 194
-        width: 32
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 12, y: 2, z: 12, w: 4}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a2b9ca3c14fc5a4f84c6023c5c27a9d
-      internalID: 166978643
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: paper_04
-      rect:
-        serializedVersion: 2
-        x: 464
-        y: 402
-        width: 47
-        height: 60
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 9, y: 5, z: 3, w: 6}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 084196835a996ee4ca407e2623d9a9a3
-      internalID: 750664923
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: button_ok_1
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 256
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 344493c0523c8b64e997cde2753ae153
-      internalID: 383500579
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: button_cancel_1
-      rect:
-        serializedVersion: 2
-        x: 784
-        y: 256
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d8174452522af24084e8bf752cac343
-      internalID: 42650527
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: button_ok_2
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 240
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9f96384cf1fa54240ae3cd5d913daad5
-      internalID: -251047629
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: button_cancel_2
-      rect:
-        serializedVersion: 2
-        x: 784
-        y: 240
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0becb3fd947ed8542bb65e9df22f01f3
-      internalID: 962532548
+      spriteID: 0a9eae294e9f6c1439af55f0c38f52f1
+      internalID: -1146336121
       vertices: []
       indices: 
       edges: []
@@ -280,7 +217,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 33f31abb3e2afef4eb2531fc9b5c802e
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -288,14 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      button_cancel_1: 42650527
-      button_cancel_2: 962532548
-      button_ok_1: 383500579
-      button_ok_2: -251047629
-      paper_01: -99052992
-      paper_02: 986089497
-      paper_03: 166978643
-      paper_04: 750664923
+      button_0: 2088076945
+      button_1: -377450027
+      button_2: -1146336121
+      inventory_background: 601972483
+      inventory_slot: 1654487523
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

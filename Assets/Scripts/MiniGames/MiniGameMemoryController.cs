@@ -19,34 +19,18 @@ public class MiniGameMemoryController : AMiniGameController
     {
         base.AfterStart();
         m_CardsPanel.SetActive(false);
-
-        LoadItens();
     }
+
     private void LoadItens()
     {
-        // TODO add random itens and randomize the list
-        //m_Itens = ItemLoader.Instance.Get(m_)
         m_Itens = ItemLoader.Instance.GetAll(false);
         m_Itens = m_Itens.OrderBy(item => Random.Range(0, m_Itens.Count)).ToList<Item>();
         m_Item = m_Itens[Random.Range(0, 16)]; // Qnté des slots
     }
 
-
-    private void OnMiniGameMemoryEnd(GameEventMessage message)
-    {
-        if(message.Contains<Item>(EGameEventMessage.Item, out Item item))
-        {
-            m_IsWin = m_Item.Name == item.Name;
-
-            if(m_IsWin) Debug.Log($"YOU GOT THE {m_Item.Name}");
-            else Debug.Log($"NO! YOU MISS THE {m_Item.Name}");
-        }
-
-
-        StartCoroutine(EndMinigameRoutine());
-    }
     public override void StartMinigame()
     {
+        LoadItens();
         base.StartMinigame();
         SubscribeAll();
         StartCoroutine(StartMinigameRoutine());
@@ -69,6 +53,20 @@ public class MiniGameMemoryController : AMiniGameController
         GameEventSystem.Instance.UnsubscribeFrom(EGameEvent.MiniGameMemoryEnd, OnMiniGameMemoryEnd);
     }
 
+
+    private void OnMiniGameMemoryEnd(GameEventMessage message)
+    {
+        if (message.Contains<Item>(EGameEventMessage.Item, out Item item))
+        {
+            m_IsWin = m_Item.Name == item.Name;
+
+            if (m_IsWin) Debug.Log($"YOU GOT THE {m_Item.Name}");
+            else Debug.Log($"NO! YOU MISS THE {m_Item.Name}");
+        }
+
+
+        StartCoroutine(EndMinigameRoutine());
+    }
 
     private IEnumerator StartMinigameRoutine()
     {
