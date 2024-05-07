@@ -64,7 +64,10 @@ public class PlayerBehaviorManager : MonoBehaviour
 
     public void AddItem(Item item)
     {
+        m_CurrentMiniGame = null;
+
         if (IsInventoryFull()) return;
+
 
         m_Inventory.Add(item);
         GameEventSystem.Instance.TriggerEvent(EGameEvent.InventoryChanged, new GameEventMessage(EGameEventMessage.ItemList, m_Inventory));

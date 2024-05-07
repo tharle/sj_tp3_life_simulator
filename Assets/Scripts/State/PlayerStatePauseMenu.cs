@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,21 +11,41 @@ public class PlayerStatePauseMenu : APlayerState
 
     public override void Enter()
     {
-        Debug.Log("ENTER PauseMenu");
+        GameEventMessage message = new GameEventMessage(EGameEventMessage.Toggle, true);
+        message.Add(EGameEventMessage.IsInventoryFull, m_PlayerBehavior.IsInventoryFull());
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.GameMenuToggle, message);
+        Time.timeScale = 0f;
+        SubscribeAll();
+    }
+
+    private void SubscribeAll()
+    {
+        GameEventSystem.Instance.SubscribeTo(EGameEvent.GameMenuEndGame, OnGameMenuEndGame);
     }
 
     public override void Execute()
     {
-        Debug.Log("IS PauseMenu");
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            m_PlayerBehavior.ChangeState(EPlayerState.PauseMenu);
+            m_PlayerBehavior.ChangeState(EPlayerState.Run);
         }
     }
 
     public override void Exit()
     {
-        Debug.Log("EXIT PauseMenu");
+        Time.timeScale = 1f;
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.GameMenuToggle, new GameEventMessage(EGameEventMessage.Toggle, false));
+        UnsubscribeAll();
+    }
+
+    private void UnsubscribeAll()
+    {
+        GameEventSystem.Instance.UnsubscribeFrom(EGameEvent.GameMenuEndGame, OnGameMenuEndGame);
+    }
+
+    private void OnGameMenuEndGame(GameEventMessage message)
+    {
+        // Ignorer le message, elle est vide
+        m_PlayerBehavior.ChangeState(EPlayerState.Win);
     }
 }

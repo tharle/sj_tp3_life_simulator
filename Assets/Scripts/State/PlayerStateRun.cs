@@ -6,28 +6,21 @@ using UnityEngine;
 public class PlayerStateRun : APlayerState
 {
     private PlayerMoveController m_PlayerMoveController;
-    private AMiniGameController m_MiniGameController;
 
     public PlayerStateRun(PlayerBehaviorManager attachedBehavior) : base(attachedBehavior, EPlayerState.Run)
     {
         m_PlayerMoveController = attachedBehavior.GetComponent<PlayerMoveController>();
-        m_MiniGameController = null;
     }
 
     public override void Enter()
     {
         base.Enter();
-        PlayerAnimation.Instance.Interract();
+        PlayerAnimation.Instance.Idle();
     }
 
     public override void Execute()
     {
         Debug.Log("IS GAME");
-        if (m_PlayerBehavior.IsInventoryFull())
-        {
-            m_PlayerBehavior.ChangeState(EPlayerState.Win);
-            return;
-        }
 
 
         if (Input.GetKeyDown(GameParameters.InputName.GAME_MENU))
@@ -36,10 +29,10 @@ public class PlayerStateRun : APlayerState
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && m_MiniGameController != null)
+        if (Input.GetKeyDown(KeyCode.Space) && m_PlayerBehavior.CurrentMiniGame != null)
         {
             PlayerAnimation.Instance.Interract();
-            PlayMiniGame(m_MiniGameController);
+            PlayMiniGame();
             return;
         }
 
@@ -57,8 +50,8 @@ public class PlayerStateRun : APlayerState
 
         if (miniGameController != null)
         {
-            m_MiniGameController = miniGameController;
-            m_MiniGameController.gameObject.GetComponentInParent<MeshRenderer>().material.color = new Color(44, 250, 31 );
+            miniGameController.gameObject.GetComponentInParent<MeshRenderer>().material.color = new Color(44, 250, 31 );
+            m_PlayerBehavior.CurrentMiniGame = miniGameController;
             GameEventSystem.Instance.TriggerEvent(EGameEvent.ToggleTips, new GameEventMessage(EGameEventMessage.Toggle, true));
         }
     }
@@ -67,18 +60,17 @@ public class PlayerStateRun : APlayerState
     {
         AMiniGameController miniGameController = other.GetComponent<AMiniGameController>();
 
-        if (miniGameController != null && m_MiniGameController != null)
+        if (miniGameController != null && m_PlayerBehavior.CurrentMiniGame != null)
         {
-            m_MiniGameController.gameObject.GetComponentInParent<MeshRenderer>().material.color = Color.white;
-            m_MiniGameController = null;
+            m_PlayerBehavior.CurrentMiniGame.gameObject.GetComponentInParent<MeshRenderer>().material.color = Color.white;
+            m_PlayerBehavior.CurrentMiniGame = null;
             GameEventSystem.Instance.TriggerEvent(EGameEvent.ToggleTips, new GameEventMessage(EGameEventMessage.Toggle, false));
         }
     }
 
-    private void PlayMiniGame(AMiniGameController controller)
+    private void PlayMiniGame()
     {
         GameEventSystem.Instance.TriggerEvent(EGameEvent.ToggleTips, new GameEventMessage(EGameEventMessage.Toggle, false));
-        m_PlayerBehavior.CurrentMiniGame = controller;
         m_PlayerBehavior.ChangeState(EPlayerState.MiniGame);
     }
 }

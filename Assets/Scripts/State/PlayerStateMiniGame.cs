@@ -19,11 +19,6 @@ public class PlayerStateMiniGame : APlayerState
     public override void Execute()
     {
         m_PlayerBehavior.CurrentMiniGame.Execute();
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            m_PlayerBehavior.ChangeState(EPlayerState.Run);
-        }
     }
 
     public override void Exit()
