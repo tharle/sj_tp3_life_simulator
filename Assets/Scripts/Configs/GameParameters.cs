@@ -39,6 +39,13 @@ public class GameParameters
         public const string TRIGGER_AUTOMATIC_DOOR_CLOSE = "AutomaticDoorClose";
     }
 
+
+    public class AnimationTips
+    {
+        public const string TRIGGER_SHOW = "show";
+        public const string TRIGGER_HIDE = "hide";
+    }
+
     public class BundleExtension
     {
         public static readonly string[] SFX = {"mp3", "wav"};

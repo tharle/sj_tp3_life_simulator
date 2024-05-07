@@ -9,6 +9,7 @@ public enum EGameEventMessage
     Item,
     ItemList,
     MiniGameTitle,
+    Toggle,
 }
 
 public class GameEventMessage

@@ -59,6 +59,7 @@ public class PlayerStateRun : APlayerState
         {
             m_MiniGameController = miniGameController;
             m_MiniGameController.gameObject.GetComponentInParent<MeshRenderer>().material.color = new Color(44, 250, 31 );
+            GameEventSystem.Instance.TriggerEvent(EGameEvent.ToggleTips, new GameEventMessage(EGameEventMessage.Toggle, true));
         }
     }
 
@@ -66,15 +67,17 @@ public class PlayerStateRun : APlayerState
     {
         AMiniGameController miniGameController = other.GetComponent<AMiniGameController>();
 
-        if (miniGameController != null)
+        if (miniGameController != null && m_MiniGameController != null)
         {
             m_MiniGameController.gameObject.GetComponentInParent<MeshRenderer>().material.color = Color.white;
             m_MiniGameController = null;
+            GameEventSystem.Instance.TriggerEvent(EGameEvent.ToggleTips, new GameEventMessage(EGameEventMessage.Toggle, false));
         }
     }
 
     private void PlayMiniGame(AMiniGameController controller)
     {
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.ToggleTips, new GameEventMessage(EGameEventMessage.Toggle, false));
         m_PlayerBehavior.CurrentMiniGame = controller;
         m_PlayerBehavior.ChangeState(EPlayerState.MiniGame);
     }

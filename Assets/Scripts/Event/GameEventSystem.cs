@@ -11,7 +11,8 @@ public enum EGameEvent
     MiniGameMemoryStart,
     MiniGameMemoryEnd,
     MiniGameMemoryInitCard,
-    GameEnd
+    GameEnd,
+    ToggleTips
 }
 
 public class GameEventSystem

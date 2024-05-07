@@ -51,6 +51,9 @@ public abstract class AMiniGameController : MonoBehaviour
             GetComponentInParent<MeshRenderer>().material.color = Color.white;
             Destroy(GetComponent<BoxCollider>()); // Enlever le minigame du jeu
             Destroy(GetComponentInChildren<ParticleSystem>());
+        } else
+        {
+            GameEventSystem.Instance.TriggerEvent(EGameEvent.ToggleTips, new GameEventMessage(EGameEventMessage.Toggle, true));
         }
 
         GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameEnd, eventMessage);
