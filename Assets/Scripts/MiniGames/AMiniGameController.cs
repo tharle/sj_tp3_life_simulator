@@ -45,7 +45,13 @@ public abstract class AMiniGameController : MonoBehaviour
         GameEventMessage eventMessage = new GameEventMessage();
 
         // Se tu as perdu, il ne faut que ne pas envoyer l'item
-        if (m_IsWin) eventMessage.Add(EGameEventMessage.Item, m_Item);
+        if (m_IsWin) 
+        { 
+            eventMessage.Add(EGameEventMessage.Item, m_Item);
+            GetComponentInParent<MeshRenderer>().material.color = Color.white;
+            Destroy(GetComponent<BoxCollider>()); // Enlever le minigame du jeu
+            Destroy(GetComponentInChildren<ParticleSystem>());
+        }
 
         GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameEnd, eventMessage);
     }

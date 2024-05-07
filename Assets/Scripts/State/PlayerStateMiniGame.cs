@@ -28,7 +28,6 @@ public class PlayerStateMiniGame : APlayerState
 
     public override void Exit()
     {
-        Debug.Log("EXIT Mini Game Memory");
         UnsubscribeAll();
     }
 
