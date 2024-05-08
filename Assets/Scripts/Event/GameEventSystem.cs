@@ -14,7 +14,8 @@ public enum EGameEvent
     GameEnd,
     ToggleTips,
     GameMenuToggle,
-    GameMenuEndGame
+    GameMenuEndGame,
+    LoadGame
 }
 
 public class GameEventSystem

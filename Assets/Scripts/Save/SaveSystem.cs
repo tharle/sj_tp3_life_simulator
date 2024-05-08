@@ -12,27 +12,13 @@ public class SaveSystem
     /// Save only the player, but all the rest of objects in save are untouched.
     /// </summary>
     /// <param name="player"></param>
-    /*public static void Save(Player player)
+    public static void Save(List<Item> intentory)
     {
         SaveData saveData = new SaveData();
-
-        // Load the data for not losing others previus data saved
-        Load(data => { saveData = data; });
-        saveData.PlayerData = player;
+        saveData.FromItens(intentory);
 
         Save(saveData);
-    }*/
-
-    /*public static void Save(LevelHistoric newLevelHistoric, AchievementData[] achievements)
-    {
-        SaveData saveData = new SaveData();
-
-        // Load the data for not losing others previus data saved
-        Load(data => { saveData = data; });
-        saveData.PlayerData.SetLevel(newLevelHistoric);
-        if(achievements != null && achievements.Length > 0) saveData.PlayerData.Achievements = achievements;
-        Save(saveData);
-    }*/
+    }
 
     private static void Save(SaveData data)
     {

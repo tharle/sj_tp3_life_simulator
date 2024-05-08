@@ -39,8 +39,10 @@ public class ItemLoader
         return assetNames;
     }*/
 
-    public void LoadAll()
+    public void LoadAll(bool forceLoad = false)
     {
+        if (m_Items.Count > 0 && !forceLoad) return;
+
         //string[] assetNames = GetAssetsNames();
         List<ItemScriptableObject> items = BundleLoader.Instance.LoadAll<ItemScriptableObject>(GameParameters.BundleNames.SCRIT_OBJETS, true);
         foreach (ItemScriptableObject itemData in items)

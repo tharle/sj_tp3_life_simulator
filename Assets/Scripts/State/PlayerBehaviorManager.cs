@@ -71,5 +71,17 @@ public class PlayerBehaviorManager : MonoBehaviour
 
         m_Inventory.Add(item);
         GameEventSystem.Instance.TriggerEvent(EGameEvent.InventoryChanged, new GameEventMessage(EGameEventMessage.ItemList, m_Inventory));
+        SaveGame();
+    }
+
+    private void SaveGame()
+    {
+        SaveSystem.Save(m_Inventory);
+    }
+
+    public void LoadGame()
+    {
+        SaveSystem.Load((saveData) => m_Inventory = saveData.ToItens());
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.InventoryChanged, new GameEventMessage(EGameEventMessage.ItemList, m_Inventory));
     }
 }

@@ -26,4 +26,9 @@ public class GameMenuController : MonoBehaviour
     {
         GameEventSystem.Instance.TriggerEvent(EGameEvent.GameMenuEndGame, new GameEventMessage());
     }
+
+    public void OnClickLoadGame()
+    {
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.LoadGame, new GameEventMessage(EGameEventMessage.Enter, true));
+    }
 }

@@ -21,6 +21,7 @@ public class PlayerStatePauseMenu : APlayerState
     private void SubscribeAll()
     {
         GameEventSystem.Instance.SubscribeTo(EGameEvent.GameMenuEndGame, OnGameMenuEndGame);
+        GameEventSystem.Instance.SubscribeTo(EGameEvent.LoadGame, OnLoadGame);
     }
 
     public override void Execute()
@@ -41,11 +42,20 @@ public class PlayerStatePauseMenu : APlayerState
     private void UnsubscribeAll()
     {
         GameEventSystem.Instance.UnsubscribeFrom(EGameEvent.GameMenuEndGame, OnGameMenuEndGame);
+        GameEventSystem.Instance.UnsubscribeFrom(EGameEvent.LoadGame, OnLoadGame);
     }
 
     private void OnGameMenuEndGame(GameEventMessage message)
     {
         // Ignorer le message, elle est vide
         m_PlayerBehavior.ChangeState(EPlayerState.Win);
+    }
+
+    private void OnLoadGame(GameEventMessage message)
+    {
+        if(message.Contains<bool>(EGameEventMessage.Enter, out bool enter) && enter)
+        {
+            m_PlayerBehavior.LoadGame();
+        }
     }
 }
