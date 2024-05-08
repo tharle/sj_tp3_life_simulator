@@ -14,10 +14,9 @@ public class GameEndManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_ItemTotal;
     [SerializeField] private GameObject m_GameEndPanel;
     [SerializeField] private CinemachineVirtualCamera m_Camera;
-
+    
     private void Start()
     {
-        m_GameEndPanel.SetActive(false);
         GameEventSystem.Instance.SubscribeTo(EGameEvent.GameEnd, OnGameEnd);
     }
 
