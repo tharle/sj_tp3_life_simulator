@@ -6,6 +6,9 @@ using UnityEngine;
 public abstract class AMiniGameController : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera m_Camera;
+    [SerializeField] private Transform m_PlayerSpot;
+
+    public Transform PlayerSpot { get => m_PlayerSpot; }
 
     protected Item m_Item;
     protected bool m_IsWin;
@@ -24,18 +27,13 @@ public abstract class AMiniGameController : MonoBehaviour
         return CinemachineCore.Instance.GetActiveBrain(0);
     }
 
-    private void ChangeCamera() 
+    public virtual void StartMinigame()
     {
-        m_CameraOld = GetCinemachineBrain().ActiveVirtualCamera;
-        m_CameraOld.Priority = 0;
-        m_Camera.Follow = transform;
-        m_Camera.Priority = 1;
+        ChangeCamera();
     }
 
-    private void ResetCamera()
+    public virtual void Execute()
     {
-        m_CameraOld.Priority = 1;
-        m_Camera.Priority = 0;
     }
 
     public virtual void EndMinigame()
@@ -59,12 +57,17 @@ public abstract class AMiniGameController : MonoBehaviour
         GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameEnd, eventMessage);
     }
 
-    public virtual void StartMinigame()
+    private void ChangeCamera()
     {
-        ChangeCamera();
+        m_CameraOld = GetCinemachineBrain().ActiveVirtualCamera;
+        m_CameraOld.Priority = 0;
+        m_Camera.Follow = transform;
+        m_Camera.Priority = 1;
     }
 
-    public virtual void Execute()
+    private void ResetCamera()
     {
+        m_CameraOld.Priority = 1;
+        m_Camera.Priority = 0;
     }
 }

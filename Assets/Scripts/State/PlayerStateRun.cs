@@ -20,9 +20,6 @@ public class PlayerStateRun : APlayerState
 
     public override void Execute()
     {
-        Debug.Log("IS GAME");
-
-
         if (Input.GetKeyDown(GameParameters.InputName.GAME_MENU))
         {
             m_PlayerBehavior.ChangeState(EPlayerState.PauseMenu);
@@ -34,11 +31,6 @@ public class PlayerStateRun : APlayerState
             PlayerAnimation.Instance.Interract();
             PlayMiniGame();
             return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            PlayerAnimation.Instance.Fishing();
         }
 
         m_PlayerMoveController.Execute();

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerStateMiniGameMeat : APlayerState
 {
-    MiniGameMeatController m_Controller;
+    MiniGameFishingController m_Controller;
     public PlayerStateMiniGameMeat(PlayerBehaviorManager attachedBehavior) : base(attachedBehavior, EPlayerState.MiniGameMeat)
     {
-        m_Controller = MiniGameMeatController.Instance;
+        m_Controller = MiniGameFishingController.Instance;
     }
 
     public override void Enter()

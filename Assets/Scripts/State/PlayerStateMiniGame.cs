@@ -11,7 +11,14 @@ public class PlayerStateMiniGame : APlayerState
 
     public override void Enter()
     {
-        Debug.Log("ENTER Mini Game Memory");
+        Debug.Log("ENTER Mini Game");
+        
+        if (m_PlayerBehavior.CurrentMiniGame.PlayerSpot != null)
+        {
+            m_PlayerBehavior.transform.forward = m_PlayerBehavior.CurrentMiniGame.PlayerSpot.forward;
+            m_PlayerBehavior.transform.position = m_PlayerBehavior.CurrentMiniGame.PlayerSpot.position;
+        }
+
         m_PlayerBehavior.CurrentMiniGame.StartMinigame();
         SubscribeAll();
     }

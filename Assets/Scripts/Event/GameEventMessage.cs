@@ -11,6 +11,7 @@ public enum EGameEventMessage
     MiniGameTitle,
     Toggle,
     IsInventoryFull,
+    Position,
 }
 
 public class GameEventMessage
