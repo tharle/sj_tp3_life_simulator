@@ -18,6 +18,11 @@ public class MiniGameFishingDisplay : MonoBehaviour
         GameEventSystem.Instance.SubscribeTo(EGameEvent.MiniGameFishingDisplay, OnMiniGameFishingDisplay);
     }
 
+    private void OnDisable()
+    {
+        GameEventSystem.Instance.UnsubscribeFrom(EGameEvent.MiniGameFishingDisplay, OnMiniGameFishingDisplay);
+    }
+
     private void OnMiniGameFishingDisplay(GameEventMessage message)
     {
         if(message.Contains<bool>(EGameEventMessage.Enter, out bool enter) && enter)

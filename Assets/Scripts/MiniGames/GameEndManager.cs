@@ -52,6 +52,7 @@ public class GameEndManager : MonoBehaviour
 
     public void OnClickPayAndLeaveButton()
     {
-        SceneManager.LoadScene(GameParameters.SceneName.GAME);
+        GameEventSystem.Instance.ClearAllEvents();
+        SceneManager.LoadScene(GameParameters.SceneName.GAME, LoadSceneMode.Single);
     }
 }

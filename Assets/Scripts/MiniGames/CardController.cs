@@ -19,12 +19,17 @@ public class CardController : MonoBehaviour
     private void Start()
     {
         m_Animator = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
         SubscribeAll();
     }
 
     private void OnDisable()
     {
         HideCard();
+        GameEventSystem.Instance.UnsubscribeFrom(EGameEvent.MiniGameMemoryInitCard, OnStartMiniGame);
     }
 
     private void HideCard()

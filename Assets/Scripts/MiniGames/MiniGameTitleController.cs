@@ -11,7 +11,7 @@ public class MiniGameTitleController : MonoBehaviour
     [SerializeField] TextMeshProUGUI m_TitleMiniGameDescription;
     [SerializeField] Image m_TitleItem;
 
-    private void Start()
+    private void OnEnable()
     {
         SubscribeAll();
     }
@@ -19,6 +19,11 @@ public class MiniGameTitleController : MonoBehaviour
     private void SubscribeAll()
     {
         GameEventSystem.Instance.SubscribeTo(EGameEvent.MiniGameMemoryInitCard, OnMiniGameStart);
+    }
+
+    private void OnDisable()
+    {
+        GameEventSystem.Instance.UnsubscribeFrom(EGameEvent.MiniGameMemoryInitCard, OnMiniGameStart);
     }
 
     private void OnMiniGameStart(GameEventMessage message)

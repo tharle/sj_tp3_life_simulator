@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStatePauseMenu : APlayerState
@@ -14,7 +15,7 @@ public class PlayerStatePauseMenu : APlayerState
         GameEventMessage message = new GameEventMessage(EGameEventMessage.Toggle, true);
         message.Add(EGameEventMessage.IsInventoryFull, m_PlayerBehavior.IsInventoryFull());
         GameEventSystem.Instance.TriggerEvent(EGameEvent.GameMenuToggle, message);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         SubscribeAll();
     }
 

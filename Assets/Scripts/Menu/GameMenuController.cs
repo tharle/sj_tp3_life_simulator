@@ -15,6 +15,11 @@ public class GameMenuController : MonoBehaviour
         GameEventSystem.Instance.SubscribeTo(EGameEvent.GameMenuToggle, OnToggle);
     }
 
+    private void OnDisable()
+    {
+        GameEventSystem.Instance.UnsubscribeFrom(EGameEvent.GameMenuToggle, OnToggle);
+    }
+
     private void OnToggle(GameEventMessage message)
     {
         if (message.Contains<bool>(EGameEventMessage.Toggle, out bool show)) m_GameMenuPanel.SetActive(show);

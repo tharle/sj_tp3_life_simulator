@@ -75,6 +75,9 @@ public class PlayerMoveController : MonoBehaviour
 
     private Transform GetCameraTransform()
     {
+        // Méchant if à cause de "Reload Scene", ça donne un frame pour que la Cinemachine start à nouveau
+        if (CinemachineCore.Instance?.GetActiveBrain(0) == null || CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera == null || CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.VirtualCameraGameObject == null || CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.VirtualCameraGameObject.transform == null) return transform;
+
         return CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.VirtualCameraGameObject.transform;
     }
 }

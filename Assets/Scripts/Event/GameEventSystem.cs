@@ -42,7 +42,7 @@ public class GameEventSystem
 
     private GameEventSystem()
     {
-        m_Events = new Dictionary<EGameEvent, Action<GameEventMessage>>();
+        ClearAllEvents();
     }
 
     public void SubscribeTo(EGameEvent eventId, Action<GameEventMessage> action)
@@ -69,5 +69,10 @@ public class GameEventSystem
         }
 
         m_Events[eventId]?.Invoke(parameters);
+    }
+
+    public void ClearAllEvents()
+    {
+        m_Events = new Dictionary<EGameEvent, Action<GameEventMessage>>();
     }
 }
