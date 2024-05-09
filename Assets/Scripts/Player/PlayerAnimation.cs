@@ -45,10 +45,12 @@ public class PlayerAnimation : MonoBehaviour
 
     public void Lose()
     {
+        AudioManager.Instance.Play(EAudio.SFXMiniGameLose, transform.position);
         m_Animator.SetTrigger(GameParameters.AnimationPlayer.TRIGGER_LOSE);
     }
     public void Win()
     {
+        AudioManager.Instance.Play(EAudio.SFXMiniGameWin, transform.position);
         m_Animator.SetTrigger(GameParameters.AnimationPlayer.TRIGGER_WIN);
     }
 

@@ -6,15 +6,18 @@ using UnityEngine;
 
 public enum EAudio
 {
+    SFXAmbianceSound,
+    SFXCard,
     SFXConfirm,
-    SFXText,
-    SFXRunDirty,
+    SFXEnterWellcome,
+    SFXFishingRod,
+    SFXMiniGameLose,
+    SFXMiniGameWin,
+    SFXMenuHide,
+    SFXMenuShow,
     SFXWalkDirty,
-    SFXFireBall,
-    SFXCoin,
-    SFXJump,
-    SFXDamaged,
-    VFXVictory
+    SFXWinGame
+    
 }
 public class AudioManager
 {
@@ -24,13 +27,16 @@ public class AudioManager
     private BundleLoader m_Loader;
 
     private static AudioManager m_Instance;
-    public static AudioManager GetInstance() {
-        if (m_Instance == null) m_Instance = new AudioManager();
 
-        return m_Instance; 
+    public static AudioManager Instance { 
+        get {
+            if (m_Instance == null) m_Instance = new AudioManager();
+
+            return m_Instance;
+        }
     }
 
-    public AudioManager()
+    private AudioManager()
     {
         m_AudioPool = new AudioPool();
         m_Loader = BundleLoader.Instance;

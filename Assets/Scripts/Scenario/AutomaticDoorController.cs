@@ -15,6 +15,7 @@ public class AutomaticDoorController : MonoBehaviour
     {
         if (other.CompareTag(GameParameters.TagName.PLAYER))
         {
+            AudioManager.Instance.Play(EAudio.SFXEnterWellcome, transform.position, false, 0.1f);
             m_Animator.SetTrigger(GameParameters.AnimationScenario.TRIGGER_AUTOMATIC_DOOR_OPEN);
         }
     }

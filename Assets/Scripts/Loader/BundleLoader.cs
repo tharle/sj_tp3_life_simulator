@@ -78,15 +78,18 @@ public class BundleLoader: MonoBehaviour
     private string[] GetSFXAssetNames()
     {
         string[] assetNames = {
+    
+            nameof(EAudio.SFXAmbianceSound), 
+            nameof(EAudio.SFXCard), 
             nameof(EAudio.SFXConfirm), 
-            nameof(EAudio.SFXRunDirty), 
-            nameof(EAudio.SFXWalkDirty), 
-            nameof(EAudio.SFXText),
-            nameof(EAudio.SFXFireBall),
-            nameof(EAudio.SFXJump),
-            nameof(EAudio.SFXCoin),
-            nameof(EAudio.SFXDamaged),
-            nameof(EAudio.VFXVictory)
+            nameof(EAudio.SFXEnterWellcome),
+            nameof(EAudio.SFXFishingRod),
+            nameof(EAudio.SFXMiniGameLose),
+            nameof(EAudio.SFXMiniGameWin),
+            nameof(EAudio.SFXMenuHide),
+            nameof(EAudio.SFXMenuShow),
+            nameof(EAudio.SFXWalkDirty),
+            nameof(EAudio.SFXWinGame)
         };
 
         return assetNames;
@@ -103,32 +106,38 @@ public class BundleLoader: MonoBehaviour
             EAudio audioId = EAudio.SFXConfirm;
             switch (clip.name)
             {
+                case nameof(EAudio.SFXAmbianceSound):
+                    audioId = EAudio.SFXAmbianceSound;
+                    break;
+                case nameof(EAudio.SFXCard):
+                    audioId = EAudio.SFXCard;
+                    break;
                 case nameof(EAudio.SFXConfirm):
                     audioId = EAudio.SFXConfirm;
                     break;
-                case nameof(EAudio.SFXRunDirty):
-                    audioId = EAudio.SFXRunDirty;
+                case nameof(EAudio.SFXEnterWellcome):
+                    audioId = EAudio.SFXEnterWellcome;
+                    break;
+                case nameof(EAudio.SFXFishingRod):
+                    audioId = EAudio.SFXFishingRod;
+                    break;
+                case nameof(EAudio.SFXMiniGameLose):
+                    audioId = EAudio.SFXMiniGameLose;
+                    break;
+                case nameof(EAudio.SFXMiniGameWin):
+                    audioId = EAudio.SFXMiniGameWin;
+                    break;
+                case nameof(EAudio.SFXMenuHide):
+                    audioId = EAudio.SFXMenuHide;
+                    break;
+                case nameof(EAudio.SFXMenuShow):
+                    audioId = EAudio.SFXMenuShow;
                     break;
                 case nameof(EAudio.SFXWalkDirty):
                     audioId = EAudio.SFXWalkDirty;
                     break;
-                case nameof(EAudio.SFXText):
-                    audioId = EAudio.SFXText;
-                    break;
-                case nameof(EAudio.SFXFireBall):
-                    audioId = EAudio.SFXFireBall;
-                    break;
-                case nameof(EAudio.SFXJump):
-                    audioId = EAudio.SFXJump;
-                    break;
-                case nameof(EAudio.SFXCoin):
-                    audioId = EAudio.SFXCoin;
-                    break;
-                case nameof(EAudio.SFXDamaged):
-                    audioId = EAudio.SFXDamaged;
-                    break;
-                case nameof(EAudio.VFXVictory):
-                    audioId = EAudio.VFXVictory;
+                case nameof(EAudio.SFXWinGame):
+                    audioId = EAudio.SFXWinGame;
                     break;
 
             }

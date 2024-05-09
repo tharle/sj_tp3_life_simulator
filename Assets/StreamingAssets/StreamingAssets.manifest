@@ -1,13 +1,10 @@
 ManifestFileVersion: 0
-CRC: 778489184
+CRC: 2462483481
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: data
-      Dependencies: {}
-    Info_1:
       Name: sfx
       Dependencies: {}
-    Info_2:
-      Name: prefab_achivement
+    Info_1:
+      Name: data
       Dependencies: {}
