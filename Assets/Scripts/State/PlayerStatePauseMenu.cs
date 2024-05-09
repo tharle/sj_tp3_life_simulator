@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerStatePauseMenu : APlayerState
 {
@@ -12,6 +13,7 @@ public class PlayerStatePauseMenu : APlayerState
 
     public override void Enter()
     {
+        AudioManager.Instance.Play(EAudio.SFXMenuShow, m_PlayerBehavior.transform.position);
         GameEventMessage message = new GameEventMessage(EGameEventMessage.Toggle, true);
         message.Add(EGameEventMessage.IsInventoryFull, m_PlayerBehavior.IsInventoryFull());
         GameEventSystem.Instance.TriggerEvent(EGameEvent.GameMenuToggle, message);
@@ -35,7 +37,7 @@ public class PlayerStatePauseMenu : APlayerState
 
     public override void Exit()
     {
-        Time.timeScale = 1f;
+        AudioManager.Instance.Play(EAudio.SFXMenuHide, m_PlayerBehavior.transform.position);
         GameEventSystem.Instance.TriggerEvent(EGameEvent.GameMenuToggle, new GameEventMessage(EGameEventMessage.Toggle, false));
         UnsubscribeAll();
     }

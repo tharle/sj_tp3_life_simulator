@@ -30,10 +30,12 @@ public class GameMenuController : MonoBehaviour
     public void OnClickGameEnd()
     {
         GameEventSystem.Instance.TriggerEvent(EGameEvent.GameMenuEndGame, new GameEventMessage());
+        AudioManager.Instance.Play(EAudio.SFXConfirm, transform.position);
     }
 
     public void OnClickLoadGame()
     {
+        AudioManager.Instance.Play(EAudio.SFXConfirm, transform.position);
         GameEventSystem.Instance.TriggerEvent(EGameEvent.LoadGame, new GameEventMessage(EGameEventMessage.Enter, true));
     }
 }

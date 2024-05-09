@@ -60,6 +60,7 @@ public class MiniGameFishingController : AMiniGameController
         m_Hit = false;
         yield return new WaitForSeconds(Random.Range(m_WaitToShowRodRange.x, m_WaitToShowRodRange.y));
         m_Hit = true;
+        AudioManager.Instance.Play(EAudio.SFXFishingRod, transform.position);
         FishingRodToggle(true);
         Debug.Log("SHOW HIT");
         yield return new WaitForSeconds(m_WaitForFishing);

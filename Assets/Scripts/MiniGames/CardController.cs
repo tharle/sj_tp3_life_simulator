@@ -56,7 +56,7 @@ public class CardController : MonoBehaviour
     public void OnClickCard()
     {
         if (m_IsBlockClick) return;
-
+        AudioManager.Instance.Play(EAudio.SFXCard, transform.position);
         AnimationBackToFront();
         m_IsBlockClick = true;
         GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameMemoryEnd, new GameEventMessage(EGameEventMessage.Item, m_Item));
