@@ -9,6 +9,9 @@ public class PlayerBehaviorManager : MonoBehaviour
 {
     [SerializeField] private EPlayerState m_CurrentStateId;
 
+    private Vector3 m_PositionInitial;
+    private Vector3 m_FowardInitial;
+
     private APlayerState m_CurrentState;
     private Dictionary<EPlayerState, APlayerState> m_States;
 
@@ -19,6 +22,11 @@ public class PlayerBehaviorManager : MonoBehaviour
     private AMiniGameController m_CurrentMiniGame;
     public AMiniGameController CurrentMiniGame { get => m_CurrentMiniGame; set => m_CurrentMiniGame = value; }
 
+    private void Awake()
+    {
+        m_PositionInitial = transform.position;
+        m_FowardInitial = transform.forward;
+    }
     void Start()
     {
         m_Inventory = new List<Item>();
@@ -28,7 +36,6 @@ public class PlayerBehaviorManager : MonoBehaviour
         m_States.Add(EPlayerState.PauseMenu, new PlayerStatePauseMenu(this));
         m_States.Add(EPlayerState.Run, new PlayerStateRun(this));
         m_States.Add(EPlayerState.MiniGame, new PlayerStateMiniGame(this));
-        m_States.Add(EPlayerState.MiniGameMeat, new PlayerStateMiniGameMeat(this));
 
         m_CurrentStateId = EPlayerState.Run;
         m_CurrentState = m_States[m_CurrentStateId];
@@ -83,5 +90,8 @@ public class PlayerBehaviorManager : MonoBehaviour
     {
         SaveSystem.Load((saveData) => m_Inventory = saveData.ToItens());
         GameEventSystem.Instance.TriggerEvent(EGameEvent.InventoryChanged, new GameEventMessage(EGameEventMessage.ItemList, m_Inventory));
+
+        transform.position = m_PositionInitial;
+        transform.forward = m_FowardInitial;
     }
 }

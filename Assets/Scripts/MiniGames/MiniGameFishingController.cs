@@ -5,19 +5,11 @@ using UnityEngine;
 
 public class MiniGameFishingController : AMiniGameController
 {
+    /*[SerializeField] Vector3 m_OffsetCamera = new Vector3(0.46f, 1.58f, -1.43f);
+    [SerializeField] float m_RotationCamera = 140f;*/
 
-    #region Singleton
-    private static MiniGameFishingController m_Instance;
-    public static MiniGameFishingController Instance { get { return m_Instance; } }
-    #endregion
-
-    private void Awake()
-    {
-        if (m_Instance != null)
-            Destroy(gameObject);
-
-        m_Instance = this;
-    }
+    [SerializeField] Vector3 m_OffsetCamera;
+    [SerializeField] float m_RotationCamera;
 
     public override void StartMinigame()
     {
@@ -26,6 +18,7 @@ public class MiniGameFishingController : AMiniGameController
         List<Item>  itens = ItemLoader.Instance.GetAll(true); ;
 
         m_Item = itens[Random.Range(0, itens.Count)];
+        SetupCamera(m_OffsetCamera, m_RotationCamera);
     }
 
     public override void Execute()

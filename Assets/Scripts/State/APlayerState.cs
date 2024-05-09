@@ -8,7 +8,6 @@ public enum EPlayerState
     PauseMenu,
     Run,
     MiniGame,
-    MiniGameMeat,
     Win
 }
 public abstract class APlayerState

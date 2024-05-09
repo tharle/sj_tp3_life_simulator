@@ -36,7 +36,7 @@ public abstract class AMiniGameController : MonoBehaviour
     {
     }
 
-    public virtual void EndMinigame()
+    protected virtual void EndMinigame()
     {
         ResetCamera();
 
@@ -46,7 +46,9 @@ public abstract class AMiniGameController : MonoBehaviour
         if (m_IsWin) 
         { 
             eventMessage.Add(EGameEventMessage.Item, m_Item);
-            GetComponentInParent<MeshRenderer>().material.color = Color.white;
+            //GetComponentInParent<MeshRenderer>().material.shader;
+            //GetComponentInParent<MeshRenderer>().material.color = Color.white;
+            GetComponentInParent<MeshRenderer>().material.DisableKeyword("_EMISSION");
             Destroy(GetComponent<BoxCollider>()); // Enlever le minigame du jeu
             Destroy(GetComponentInChildren<ParticleSystem>());
         } else
@@ -55,6 +57,15 @@ public abstract class AMiniGameController : MonoBehaviour
         }
 
         GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameEnd, eventMessage);
+    }
+
+    protected void SetupCamera(Vector3 offset, float rotation)
+    {
+        //m_OffsetCamera
+        m_Camera.GetComponent<CinemachineCameraOffset>().m_Offset = offset;
+        Vector3 rotationEuler = m_Camera.transform.localEulerAngles;
+        rotationEuler.y = rotation;
+        m_Camera.transform.localEulerAngles = rotationEuler;
     }
 
     private void ChangeCamera()

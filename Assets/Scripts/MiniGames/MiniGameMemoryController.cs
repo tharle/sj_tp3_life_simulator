@@ -36,7 +36,7 @@ public class MiniGameMemoryController : AMiniGameController
         StartCoroutine(StartMinigameRoutine());
     }
 
-    public override void EndMinigame()
+    protected override void EndMinigame()
     {
         UnsubscribeAll();
         m_CardsPanel.SetActive(false);

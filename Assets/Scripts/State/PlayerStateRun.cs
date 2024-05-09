@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerStateRun : APlayerState
 {
+    Color m_EmissionColor = new Color(0, 1, 1, 0.1f);
     private PlayerMoveController m_PlayerMoveController;
 
     public PlayerStateRun(PlayerBehaviorManager attachedBehavior) : base(attachedBehavior, EPlayerState.Run)
@@ -42,7 +43,10 @@ public class PlayerStateRun : APlayerState
 
         if (miniGameController != null)
         {
-            miniGameController.gameObject.GetComponentInParent<MeshRenderer>().material.color = new Color(44, 250, 31 );
+            Material emission = miniGameController.gameObject.GetComponentInParent<MeshRenderer>().material;
+            emission.SetColor("_EmissionColor", m_EmissionColor);
+            emission.EnableKeyword("_EMISSION");
+
             m_PlayerBehavior.CurrentMiniGame = miniGameController;
             GameEventSystem.Instance.TriggerEvent(EGameEvent.ToggleTips, new GameEventMessage(EGameEventMessage.Toggle, true));
         }
@@ -54,7 +58,8 @@ public class PlayerStateRun : APlayerState
 
         if (miniGameController != null && m_PlayerBehavior.CurrentMiniGame != null)
         {
-            m_PlayerBehavior.CurrentMiniGame.gameObject.GetComponentInParent<MeshRenderer>().material.color = Color.white;
+            /*m_PlayerBehavior.CurrentMiniGame.gameObject.GetComponentInParent<MeshRenderer>().material.color = Color.white;*/
+            m_PlayerBehavior.CurrentMiniGame.gameObject.GetComponentInParent<MeshRenderer>().material.DisableKeyword("_EMISSION");
             m_PlayerBehavior.CurrentMiniGame = null;
             GameEventSystem.Instance.TriggerEvent(EGameEvent.ToggleTips, new GameEventMessage(EGameEventMessage.Toggle, false));
         }
@@ -62,6 +67,7 @@ public class PlayerStateRun : APlayerState
 
     private void PlayMiniGame()
     {
+        m_PlayerBehavior.CurrentMiniGame.gameObject.GetComponentInParent<MeshRenderer>().material.DisableKeyword("_EMISSION");
         GameEventSystem.Instance.TriggerEvent(EGameEvent.ToggleTips, new GameEventMessage(EGameEventMessage.Toggle, false));
         m_PlayerBehavior.ChangeState(EPlayerState.MiniGame);
     }
