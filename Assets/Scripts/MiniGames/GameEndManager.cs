@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameEndManager : MonoBehaviour
@@ -17,7 +18,7 @@ public class GameEndManager : MonoBehaviour
     
     private void Start()
     {
-        GameEventSystem.Instance.SubscribeTo(EGameEvent.GameEnd, OnGameEnd);
+        GameEventSystem.Instance.SubscribeTo(EGameEvent.GameEndDisplay, OnGameEnd);
     }
 
     private void OnGameEnd(GameEventMessage message)
@@ -49,8 +50,8 @@ public class GameEndManager : MonoBehaviour
         return CinemachineCore.Instance.GetActiveBrain(0);
     }
 
-    public void OnClickPlayAndLeaveButton()
+    public void OnClickPayAndLeaveButton()
     {
-        Debug.Log("GO TO MAIN MENU");
+        SceneManager.LoadScene(GameParameters.SceneName.GAME);
     }
 }

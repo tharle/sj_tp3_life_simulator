@@ -78,28 +78,15 @@ public class GameParameters
         public const string AXIS_HORIZONTAL = "Horizontal";
         public const string AXIS_VERTICAL = "Vertical";
         public const string AXIS_MOUSE_HORIZONTAL = "Mouse X";
-        public const KeyCode NEXT_TEXT = KeyCode.Space;
         public const KeyCode GAME_MENU = KeyCode.Escape;
-    }
-
-    public class PlatformName
-    {
-        public const string START = "Start";
-        public const string END = "End";
-        public const string SPOT = "Spot";
     }
 
     public class SceneName
     {
-        public const string MAIN_MENU = "MainMenu";
-        public const string LEVEL_1 = "Level1";
-        public const string LEVEL_2 = "Level2";
-        public const string LEVEL_3 = "Level3";
+        public const string GAME = "Game";
     }
 
     public class TagName {
         public const string PLAYER = "Player";
-        public const string GROUND = "Ground";
-        public const string SPOT = "Spot";
     }
 }

@@ -5,20 +5,33 @@ using UnityEngine;
 
 public class MiniGameFishingController : AMiniGameController
 {
-    /*[SerializeField] Vector3 m_OffsetCamera = new Vector3(0.46f, 1.58f, -1.43f);
-    [SerializeField] float m_RotationCamera = 140f;*/
+    [SerializeField] private Vector3 m_OffsetCamera;
+    [SerializeField] private float m_RotationCamera;
 
-    [SerializeField] Vector3 m_OffsetCamera;
-    [SerializeField] float m_RotationCamera;
+    private Vector2 m_WaitToShowRodRange = new Vector2(0.5f, 2f);
+    private float m_WaitForFishing = 0.5f;
+    private bool m_Hit;
 
     public override void StartMinigame()
     {
         base.StartMinigame();
+        // Animation player
         PlayerAnimation.Instance.Fishing();
-        List<Item>  itens = ItemLoader.Instance.GetAll(true); ;
-
-        m_Item = itens[Random.Range(0, itens.Count)];
+        
+        // Setup camera
         SetupCamera(m_OffsetCamera, m_RotationCamera);
+        
+        // Load item
+        List<Item>  itens = ItemLoader.Instance.GetAll(true); ;
+        m_Item = itens[Random.Range(0, itens.Count)];
+
+        // Show display
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameFishingDisplay, new GameEventMessage(EGameEventMessage.Enter, true));
+
+        // Start random frame for fishing
+        StartCoroutine(FishingRodRoutine());
+
+        m_IsWin = false;
     }
 
     public override void Execute()
@@ -28,14 +41,36 @@ public class MiniGameFishingController : AMiniGameController
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown((int)MouseButton.Left))
         {
-            m_IsWin = true;
-            StartCoroutine(EndMinigameRoutine());
+            Debug.Log("END!");
+            if (m_Hit) m_IsWin = true;
+
+            EndMinigame();
         }
     }
 
-    private IEnumerator EndMinigameRoutine()
+    protected override void EndMinigame()
     {
-        yield return new WaitForSeconds(1.5f);
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameFishingDisplay, new GameEventMessage(EGameEventMessage.Exit, true));
+        base.EndMinigame();
+    }
+
+    private IEnumerator FishingRodRoutine()
+    {
+        yield return new WaitForSeconds(1.5f); // Delay from camera
+        m_Hit = false;
+        yield return new WaitForSeconds(Random.Range(m_WaitToShowRodRange.x, m_WaitToShowRodRange.y));
+        m_Hit = true;
+        FishingRodToggle(true);
+        Debug.Log("SHOW HIT");
+        yield return new WaitForSeconds(m_WaitForFishing);
+        Debug.Log("HIDE HIT");
+        m_Hit = false;
+        FishingRodToggle(false);
         EndMinigame();
+    }
+
+    private void FishingRodToggle(bool show)
+    {
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameFishingDisplay, new GameEventMessage(EGameEventMessage.FishingRodToggle, show));
     }
 }

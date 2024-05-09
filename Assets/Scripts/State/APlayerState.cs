@@ -28,7 +28,7 @@ public abstract class APlayerState
 
     public virtual void Enter() { }
 
-    public abstract void Execute();
+    public virtual void Execute() { }
 
     public virtual void Exit() { }
 

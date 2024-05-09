@@ -56,6 +56,7 @@ public class PlayerStatePauseMenu : APlayerState
         if(message.Contains<bool>(EGameEventMessage.Enter, out bool enter) && enter)
         {
             m_PlayerBehavior.LoadGame();
+            m_PlayerBehavior.ChangeState(EPlayerState.Run);
         }
     }
 }

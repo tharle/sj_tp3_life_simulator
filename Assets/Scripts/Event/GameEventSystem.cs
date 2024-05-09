@@ -6,16 +6,18 @@ using UnityEngine;
 
 public enum EGameEvent
 {
-    MiniGameEnd,
     InventoryChanged,
+    GameEndDisplay,
+    LoadGame,
+    GameMenuToggle,
+    GameMenuEndGame,
     MiniGameMemoryStart,
     MiniGameMemoryEnd,
     MiniGameMemoryInitCard,
-    GameEnd,
+    MiniGameFishingDisplay,
+    MiniGameEnd,
     ToggleTips,
-    GameMenuToggle,
-    GameMenuEndGame,
-    LoadGame
+    PayAndLeave
 }
 
 public class GameEventSystem

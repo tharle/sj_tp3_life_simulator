@@ -28,14 +28,6 @@ public class CreatAssetBundles
             assetBundleDefinitionList.Add(ab);
         }
 
-        // PREFAB ACHIVEMENTS
-        {
-            AssetBundleBuild ab = new();
-            ab.assetBundleName = BundleNames.PREFAB_ACHIVEMENTS;
-            ab.assetNames = RecursiveGetAllAssetsInDirectory(BundlePath.BUNDLE_ASSETS + BundlePath.PREFAB_ACHIVEMENTS).ToArray();
-            assetBundleDefinitionList.Add(ab);
-        }
-
         // Create if not exist streaming Assets directory
         if (!Directory.Exists(Application.streamingAssetsPath))
         {

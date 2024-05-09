@@ -12,6 +12,7 @@ public enum EGameEventMessage
     Toggle,
     IsInventoryFull,
     Position,
+    FishingRodToggle,
 }
 
 public class GameEventMessage
