@@ -47,7 +47,11 @@ public class PlayerStateMiniGame : APlayerState
     {
         if (message.Contains<Item>(EGameEventMessage.Item, out Item item))
         {
+            PlayerAnimation.Instance.Win();
             m_PlayerBehavior.AddItem(item);
+        } else
+        {
+            PlayerAnimation.Instance.Lose();
         }
 
         m_PlayerBehavior.ChangeState(EPlayerState.Run);

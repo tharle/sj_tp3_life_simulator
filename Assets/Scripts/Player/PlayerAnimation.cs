@@ -49,7 +49,7 @@ public class PlayerAnimation : MonoBehaviour
     }
     public void Win()
     {
-        m_Animator.SetTrigger(GameParameters.AnimationPlayer.TRIGGER_INTERACT);
+        m_Animator.SetTrigger(GameParameters.AnimationPlayer.TRIGGER_WIN);
     }
 
 
