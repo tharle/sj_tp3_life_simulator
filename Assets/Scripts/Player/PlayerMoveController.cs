@@ -6,6 +6,8 @@ public class PlayerMoveController : MonoBehaviour
 {
     [SerializeField] private float m_SpeedPlayer = 5.0f;
     [SerializeField] private float m_SpeedAngleCamera = 15.0f;
+    [SerializeField] private Vector2 m_BoundMax;
+    [SerializeField] private Vector2 m_BoundMin;
 
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
@@ -19,7 +21,18 @@ public class PlayerMoveController : MonoBehaviour
     public void Execute()
     {
         Move();
-        if (Input.GetMouseButton((int)MouseButton.Left)) RotateCamera();
+        RotateCamera();
+        CheckBounds();
+    }
+
+    private void CheckBounds()
+    {
+        Vector3 position = transform.position;
+        position.x = m_BoundMin.x > position.x ? m_BoundMin.x : position.x;
+        position.x = m_BoundMax.x < position.x ? m_BoundMax.x : position.x;
+        position.z = m_BoundMin.y > position.z ? m_BoundMin.y : position.z;
+        position.z = m_BoundMax.y < position.z ? m_BoundMax.y : position.z;
+        transform.position = position;
     }
 
     private void Move()
@@ -46,19 +59,18 @@ public class PlayerMoveController : MonoBehaviour
 
     private void RotateCamera()
     {
-        Vector3 eulerAngle = GetCameraTransform().rotation.eulerAngles;
-        // Horizontal camera
-        eulerAngle.y += m_SpeedAngleCamera * Input.GetAxis(GameParameters.InputName.AXIS_MOUSE_HORIZONTAL);
-        eulerAngle.y = eulerAngle.y > 360 ? eulerAngle.y - 360 : eulerAngle.y;
-        eulerAngle.y = eulerAngle.y < 0 ? eulerAngle.y + 360 : eulerAngle.y;
+        if (Input.GetMouseButton((int)MouseButton.Left))
+        {
+            Vector3 eulerAngle = GetCameraTransform().rotation.eulerAngles;
+            // Horizontal camera
+            eulerAngle.y += m_SpeedAngleCamera * Input.GetAxis(GameParameters.InputName.AXIS_MOUSE_HORIZONTAL);
+            eulerAngle.y = eulerAngle.y > 360 ? eulerAngle.y - 360 : eulerAngle.y;
+            eulerAngle.y = eulerAngle.y < 0 ? eulerAngle.y + 360 : eulerAngle.y;
 
-        // J'ai eu des problèmes pour mettre de limite dans la camera Vertical
-        // Donc, j'ai abandoné ça
-        /*eulerAngle.x += m_Angle * Input.GetAxis("Mouse Y"); // Vertical camera
-        eulerAngle.x = eulerAngle.x > 40 ? 40 : eulerAngle.x;
-        eulerAngle.x = eulerAngle.x < -45 ? -45 : eulerAngle.x;*/
+            GetCameraTransform().rotation = Quaternion.Euler(eulerAngle.x, eulerAngle.y, eulerAngle.z);
 
-        GetCameraTransform().rotation = Quaternion.Euler(eulerAngle.x, eulerAngle.y, eulerAngle.z);
+        }
+
     }
 
     private Transform GetCameraTransform()

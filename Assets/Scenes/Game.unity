@@ -46141,6 +46141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SpeedPlayer: 5
   m_SpeedAngleCamera: 10
+  m_BoundMax: {x: 64, y: 80}
+  m_BoundMin: {x: -45, y: -70}
 --- !u!136 &972210607
 CapsuleCollider:
   m_ObjectHideFlags: 0
