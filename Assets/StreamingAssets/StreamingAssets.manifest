@@ -1,10 +1,10 @@
 ManifestFileVersion: 0
-CRC: 2462483481
+CRC: 1051924232
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: sfx
+      Name: data
       Dependencies: {}
     Info_1:
-      Name: data
+      Name: sfx
       Dependencies: {}

@@ -24,7 +24,7 @@ public class MiniGameMemoryController : AMiniGameController
     {
         m_Itens = ItemLoader.Instance.GetAll(false);
         m_Itens = m_Itens.OrderBy(item => Random.Range(0, m_Itens.Count)).ToList<Item>();
-        m_Item = m_Itens[Random.Range(0, 16)]; // Qnté des slots
+        m_Item = m_Itens[Random.Range(0, 15)]; // Qnté des slots
     }
 
     public override void StartMinigame()

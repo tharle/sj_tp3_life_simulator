@@ -58,7 +58,6 @@ public class PlayerStateRun : APlayerState
 
         if (miniGameController != null && m_PlayerBehavior.CurrentMiniGame != null)
         {
-            /*m_PlayerBehavior.CurrentMiniGame.gameObject.GetComponentInParent<MeshRenderer>().material.color = Color.white;*/
             m_PlayerBehavior.CurrentMiniGame.gameObject.GetComponentInParent<MeshRenderer>().material.DisableKeyword("_EMISSION");
             m_PlayerBehavior.CurrentMiniGame = null;
             GameEventSystem.Instance.TriggerEvent(EGameEvent.ToggleTips, new GameEventMessage(EGameEventMessage.Toggle, false));

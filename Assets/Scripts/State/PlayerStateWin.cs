@@ -14,6 +14,7 @@ public class PlayerStateWin : APlayerState
     {
         base.Enter();
         AudioManager.Instance.Play(EAudio.SFXWinGame, m_PlayerBehavior.transform.position);
+        GameEventSystem.Instance.TriggerEvent(EGameEvent.ToggleTips, new GameEventMessage(EGameEventMessage.Toggle, false));
         GameEventSystem.Instance.TriggerEvent(EGameEvent.GameEndDisplay, new GameEventMessage(EGameEventMessage.ItemList, m_PlayerBehavior.Inventory));
     }
 }

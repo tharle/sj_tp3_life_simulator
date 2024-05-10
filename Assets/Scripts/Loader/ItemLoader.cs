@@ -56,13 +56,15 @@ public class ItemLoader
 
     public Item Get(string itemName)
     {
-        if (!m_Items.ContainsKey(itemName))
+        if (m_Items.Count <= 0) LoadAll();
+
+        if (!m_Items.ContainsKey(itemName.Trim()))
         {
             ItemScriptableObject itemData = BundleLoader.Instance.Load<ItemScriptableObject>(GameParameters.BundleNames.SCRIT_OBJETS, itemName);
             m_Items.Add(itemName, itemData);
         }
 
-        return m_Items[itemName].Value;
+        return m_Items[itemName.Trim()].Value;
     }
 
     public List<Item> GetAll(bool IsRefrigerator)

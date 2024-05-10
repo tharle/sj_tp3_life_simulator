@@ -54,9 +54,14 @@ public class PlayerAnimation : MonoBehaviour
         m_Animator.SetTrigger(GameParameters.AnimationPlayer.TRIGGER_WIN);
     }
 
-
-    public void UpdateVelocity(Vector3 velocity)
+    // pour l'animation de marcher
+    public void PlayWalkSound()
     {
-        m_Animator.SetFloat(GameParameters.AnimationPlayer.FLOAT_VELOCITY, velocity.magnitude);
+        AudioManager.Instance.Play(EAudio.SFXWalkDirty, transform.position, true, 0.5f);
+    }
+
+    public void StopWalkSound()
+    {
+        AudioManager.Instance.StopAllLooping();
     }
 }

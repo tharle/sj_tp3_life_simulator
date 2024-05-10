@@ -38,4 +38,9 @@ public class GameMenuController : MonoBehaviour
         AudioManager.Instance.Play(EAudio.SFXConfirm, transform.position);
         GameEventSystem.Instance.TriggerEvent(EGameEvent.LoadGame, new GameEventMessage(EGameEventMessage.Enter, true));
     }
+
+    public void OnClickQuit()
+    {
+        Application.Quit();
+    }
 }
