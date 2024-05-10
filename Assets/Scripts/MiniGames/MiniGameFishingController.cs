@@ -37,11 +37,9 @@ public class MiniGameFishingController : AMiniGameController
     public override void Execute()
     {
         base.Execute();
-        Debug.Log("IS FISHING");
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown((int)MouseButton.Left))
         {
-            Debug.Log("END!");
             if (m_Hit) m_IsWin = true;
 
             EndMinigame();
@@ -62,9 +60,7 @@ public class MiniGameFishingController : AMiniGameController
         m_Hit = true;
         AudioManager.Instance.Play(EAudio.SFXFishingRod, transform.position);
         FishingRodToggle(true);
-        Debug.Log("SHOW HIT");
         yield return new WaitForSeconds(m_WaitForFishing);
-        Debug.Log("HIDE HIT");
         m_Hit = false;
         FishingRodToggle(false);
         EndMinigame();

@@ -58,9 +58,6 @@ public class MiniGameMemoryController : AMiniGameController
         if (message.Contains<Item>(EGameEventMessage.Item, out Item item))
         {
             m_IsWin = m_Item.Name == item.Name;
-
-            if (m_IsWin) Debug.Log($"YOU GOT THE {m_Item.Name}");
-            else Debug.Log($"NO! YOU MISS THE {m_Item.Name}");
         }
 
 
