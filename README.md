@@ -52,4 +52,4 @@ Mini Game fishing
 Allez aux frigo. Il est possible de voir les particules bleues. Vous devez appuyer sur espace pour démarrer le jeu.
 
 ### Objectives
-Vous devez appuyer sur espace ou cliquer sur le bouton gauche lorsque l'icône azole et le bruit d'accrochage apparaissent. Si le joueur le fait au bon moment, il sera récompensé par un objet réfrigéré.
+Vous devez appuyer sur espace ou cliquer sur le bouton gauche lorsque l'icône hameçon et le bruit d'accrochage apparaissent. Si le joueur le fait au bon moment, il sera récompensé par un objet réfrigéré.
