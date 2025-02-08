@@ -41,20 +41,20 @@ public class PlayerMoveController : MonoBehaviour
         float hDeplacement = Input.GetAxis(GameParameters.InputName.AXIS_HORIZONTAL);
         float vDeplacement = Input.GetAxis(GameParameters.InputName.AXIS_VERTICAL);
 
-        //obtient la nouvelle direction ( (avant/arrièrre) + (gauche/droite) )
+        //obtient la nouvelle direction ( (avant/arriï¿½rre) + (gauche/droite) )
         Vector3 directionDep = GetCameraTransform().forward * vDeplacement + GetCameraTransform().right * hDeplacement;
-        directionDep.y = 0; //pas de valeur en y , le cas où la caméra regarde vers le bas ou vers le haut
+        directionDep.y = 0; //pas de valeur en y , le cas oï¿½ la camï¿½ra regarde vers le bas ou vers le haut
         Vector3 velocity = Vector3.zero;
-        if (directionDep != Vector3.zero) //change de direction s’il y a un changement
+        if (directionDep != Vector3.zero) //change de direction sï¿½il y a un changement
         {
-            //Oriente le personnage vers la direction de déplacement et applique la vélocité dans la même direction
+            //Oriente le personnage vers la direction de dï¿½placement et applique la vï¿½locitï¿½ dans la mï¿½me direction
             transform.forward = directionDep;
             
             velocity = directionDep * m_SpeedPlayer;
         }
         m_Animator.SetFloat(GameParameters.AnimationPlayer.FLOAT_VELOCITY, velocity.magnitude);
-        velocity.y = m_Rigidbody.velocity.y;
-        m_Rigidbody.velocity = velocity;
+        velocity.y = m_Rigidbody.linearVelocity.y;
+        m_Rigidbody.linearVelocity = velocity;
     }
 
     private void RotateCamera()
@@ -75,7 +75,7 @@ public class PlayerMoveController : MonoBehaviour
 
     private Transform GetCameraTransform()
     {
-        // Méchant if à cause de "Reload Scene", ça donne un frame pour que la Cinemachine start à nouveau
+        // Mï¿½chant if ï¿½ cause de "Reload Scene", ï¿½a donne un frame pour que la Cinemachine start ï¿½ nouveau
         if (CinemachineCore.Instance?.GetActiveBrain(0) == null || CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera == null || CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.VirtualCameraGameObject == null || CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.VirtualCameraGameObject.transform == null) return transform;
 
         return CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.VirtualCameraGameObject.transform;
