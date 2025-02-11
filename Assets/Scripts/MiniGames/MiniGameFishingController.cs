@@ -12,9 +12,9 @@ public class MiniGameFishingController : AMiniGameController
     private float m_WaitForFishing = 0.5f;
     private bool m_Hit;
 
-    public override void StartMinigame()
+    public override IEnumerator StartMinigame()
     {
-        base.StartMinigame();
+        yield return base.StartMinigame();
         // Animation player
         PlayerAnimation.Instance.Fishing();
         
@@ -22,16 +22,21 @@ public class MiniGameFishingController : AMiniGameController
         SetupCamera(m_OffsetCamera, m_RotationCamera);
         
         // Load item
-        List<Item>  itens = ItemLoader.Instance.GetAll(true); ;
-        m_Item = itens[Random.Range(0, itens.Count)];
+        List<Item>  items ;
+        yield return ItemLoader.Instance.GetAll(true, 
+            (itemsLoaded) => 
+            {
+                items = itemsLoaded;
+                m_Item = items[Random.Range(0, items.Count)];
 
-        // Show display
-        GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameFishingDisplay, new GameEventMessage(EGameEventMessage.Enter, true));
+                // Show display
+                GameEventSystem.Instance.TriggerEvent(EGameEvent.MiniGameFishingDisplay, new GameEventMessage(EGameEventMessage.Enter, true));
 
-        // Start random frame for fishing
-        StartCoroutine(FishingRodRoutine());
+                // Start random frame for fishing
+                StartCoroutine(FishingRodRoutine());
 
-        m_IsWin = false;
+                m_IsWin = false;
+            });
     }
 
     public override void Execute()

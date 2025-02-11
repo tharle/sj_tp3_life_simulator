@@ -1,8 +1,11 @@
 using UnityEngine;
 using System.IO;
+using UnityEngine.Networking;
+using System.Collections;
+using NUnit.Framework;
+using System.Collections.Generic;
 using System;
 using Unity.VisualScripting;
-using System.Collections.Generic;
 
 public class BundleLoader: MonoBehaviour
 {
@@ -45,34 +48,48 @@ public class BundleLoader: MonoBehaviour
         return asset;
     }
 
-    public List<T> LoadAll<T>(string bundleName, bool IsCallUnload, params string[] assetNames) where T : UnityEngine.Object
+    public IEnumerator LoadAll<T>(string bundleName, bool IsCallUnload, Action<List<T>> onReturn, params string[] assetNames) where T : UnityEngine.Object
     {
-        AssetBundle localAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, bundleName));
-        List<T> assets = new List<T>();
+        Debug.Log($"LOAD ALL FROM THAT PATH: {Path.Combine(Application.streamingAssetsPath, bundleName)}");
+        var localAssetBundle = AssetBundle.LoadFromFileAsync(Path.Combine(Application.streamingAssetsPath, bundleName));
 
+        yield return localAssetBundle;
+
+
+        List<T> assets = new ();
+        
         if (localAssetBundle == null)
         {
             Debug.LogError("Failed to load AssetBundle!");
-            return assets;
         }
 
         if(assetNames.Length > 0)
         {
             foreach(string assetName in assetNames)
             {
-                T asset = localAssetBundle.LoadAsset<T>(assetName);
-                assets.Add(asset);
+                AssetBundleRequest assetLoadRequest = localAssetBundle.assetBundle.LoadAssetAsync<T>(assetName);
+
+                yield return assetLoadRequest;
+
+                if(assetLoadRequest.asset==null)
+                {
+                    Debug.LogError("Failed to load asset");
+                }
+                else
+                {
+                    Debug.Log(assetLoadRequest.asset.name);
+                    assets.Add(assetLoadRequest.asset as T);
+                }
+
+                
             }
 
-        } else
-        {
-            assets = new List<T>(localAssetBundle.LoadAllAssets<T>());
         }
 
 
-        if(IsCallUnload) localAssetBundle.Unload(false);
+        if(IsCallUnload) localAssetBundle.assetBundle.Unload(false);
 
-        return assets;
+        onReturn?.Invoke(assets);
     }
 
     private string[] GetSFXAssetNames()
@@ -95,12 +112,15 @@ public class BundleLoader: MonoBehaviour
         return assetNames;
     }
 
-    public Dictionary<EAudio, AudioClip> LoadSFX()
+    public  IEnumerator LoadSFX(Action<Dictionary<EAudio, AudioClip>> OnReturn)
     {
         Dictionary<EAudio, AudioClip> audioClipsBundle = new();
+        List<AudioClip> audioClips = new();
 
+        Action<List<AudioClip>> OnLoadAllSFX = delegate(List<AudioClip> audios){audioClips = audios;};
         string[] assetNames = GetSFXAssetNames();
-        List<AudioClip> audioClips = LoadAll<AudioClip>(GameParameters.BundleNames.SFX, false, assetNames);
+        yield return LoadAll<AudioClip>(GameParameters.BundleNames.SFX, false, OnLoadAllSFX, assetNames);
+
         foreach (AudioClip clip in audioClips)
         {
             EAudio audioId = EAudio.SFXConfirm;
@@ -147,7 +167,7 @@ public class BundleLoader: MonoBehaviour
             audioClipsBundle.Add(audioId, newClip);
         }
 
-        return audioClipsBundle;
+        OnReturn?.Invoke(audioClipsBundle);
     }
 
 }

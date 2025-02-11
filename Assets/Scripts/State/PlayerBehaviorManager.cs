@@ -88,6 +88,13 @@ public class PlayerBehaviorManager : MonoBehaviour
 
     public void LoadGame()
     {
+        StartCoroutine(LoadGameRoutine());
+    }
+
+    IEnumerator LoadGameRoutine()
+    {
+        yield return ItemLoader.Instance.LoadAll();
+
         SaveSystem.Load((saveData) => m_Inventory = saveData.ToItens());
         GameEventSystem.Instance.TriggerEvent(EGameEvent.InventoryChanged, new GameEventMessage(EGameEventMessage.ItemList, m_Inventory));
 

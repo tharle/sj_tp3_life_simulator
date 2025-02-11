@@ -17,7 +17,7 @@ public class PlayerStateMiniGame : APlayerState
             m_PlayerBehavior.transform.position = m_PlayerBehavior.CurrentMiniGame.PlayerSpot.position;
         }
 
-        m_PlayerBehavior.CurrentMiniGame.StartMinigame();
+        m_PlayerBehavior.StartCoroutine(m_PlayerBehavior.CurrentMiniGame.StartMinigame());
         SubscribeAll();
     }
 

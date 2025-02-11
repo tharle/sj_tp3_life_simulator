@@ -27,9 +27,10 @@ public abstract class AMiniGameController : MonoBehaviour
         return CinemachineCore.Instance.GetActiveBrain(0);
     }
 
-    public virtual void StartMinigame()
+    public virtual IEnumerator StartMinigame()
     {
         ChangeCamera();
+        yield return null;
     }
 
     public virtual void Execute()

@@ -29,7 +29,7 @@ public class SaveData
 
     public List<Item> ToItens()
     {
-        ItemLoader.Instance.LoadAll();
+        //ItemLoader.Instance.LoadAll();
 
         List<Item> items = new List<Item>();
 

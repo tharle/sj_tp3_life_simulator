@@ -20,19 +20,21 @@ public class MiniGameMemoryController : AMiniGameController
         m_CardsPanel.SetActive(false);
     }
 
-    private void LoadItens()
+    public override IEnumerator StartMinigame()
     {
-        m_Itens = ItemLoader.Instance.GetAll(false);
-        m_Itens = m_Itens.OrderBy(item => Random.Range(0, m_Itens.Count)).ToList<Item>();
-        m_Item = m_Itens[Random.Range(0, 15)]; // Qnté des slots
-    }
+        m_Itens = new();
+        yield return ItemLoader.Instance.GetAll(true, 
+            (itemsLoaded) => 
+            {
+                m_Itens = itemsLoaded;
+                m_Itens = m_Itens.OrderBy(item => Random.Range(0, m_Itens.Count)).ToList<Item>();
+                m_Item = m_Itens[Random.Range(0, 15)]; // Qntï¿½ des slots
 
-    public override void StartMinigame()
-    {
-        LoadItens();
-        base.StartMinigame();
-        SubscribeAll();
-        StartCoroutine(StartMinigameRoutine());
+                SubscribeAll();
+                StartCoroutine(StartMinigameRoutine());
+            });
+            
+        yield return base.StartMinigame();
     }
 
     protected override void EndMinigame()

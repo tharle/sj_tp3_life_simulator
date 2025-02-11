@@ -19,7 +19,7 @@ public enum EAudio
     SFXWinGame
     
 }
-public class AudioManager
+public class AudioManager : MonoBehaviour
 {
     private Dictionary<EAudio, AudioClip> m_AudioClips;
     private AudioPool m_AudioPool;
@@ -29,22 +29,36 @@ public class AudioManager
     private static AudioManager m_Instance;
 
     public static AudioManager Instance { 
-        get {
-            if (m_Instance == null) m_Instance = new AudioManager();
+        get { 
+            if (m_Instance == null) 
+            {
+                GameObject go = new GameObject("AudioManager");
+                m_Instance = go.AddComponent<AudioManager>();
+            } 
 
             return m_Instance;
         }
     }
 
-    private AudioManager()
-    {
+    IEnumerator Start() {
+
         m_AudioPool = new AudioPool();
         m_Loader = BundleLoader.Instance;
-        m_AudioClips = m_Loader.LoadSFX();
+        m_AudioClips = new();
+
+        yield return m_Loader.LoadSFX(OnLoadAllSFX);
+    }
+
+    private void OnLoadAllSFX(Dictionary<EAudio, AudioClip> audioClips)
+    {
+        m_AudioClips = audioClips;
     }
 
     public void Play(EAudio audioClipId, Vector3 soundPosition, bool isLooping = false, float volume = 1f)
     {
+
+        if(!m_AudioClips.ContainsKey(audioClipId)) return; // not load yet
+
         AudioSource audioSource;
         audioSource = m_AudioPool.GetAvailable();
         audioSource.clip = m_AudioClips[audioClipId];

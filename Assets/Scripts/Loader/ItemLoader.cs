@@ -1,31 +1,40 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ItemLoader
+public class ItemLoader : MonoBehaviour
 {
     #region Singleton
     private static ItemLoader m_Instance;
-    public static ItemLoader Instance
-    {
-        get
-        {
-            if (m_Instance == null)
+
+    public static ItemLoader Instance { 
+        get { 
+            if (m_Instance == null) 
             {
-                m_Instance = new ItemLoader();
-            }
+                GameObject go = new GameObject("ItemLoader");
+                m_Instance = go.AddComponent<ItemLoader>();
+            } 
 
             return m_Instance;
         }
     }
     #endregion
 
-    private Dictionary<string, ItemScriptableObject> m_Items; // Name/ItemScriptableObject
+    private Dictionary<string, ItemScriptableObject> m_Items = new Dictionary<string, ItemScriptableObject>(); // Name/ItemScriptableObject
+    private bool IsLoading;
+
+
+    IEnumerator Start() {
+        IsLoading = true;
+        yield return LoadAll();
+    }
 
     public ItemLoader()
     {
-        m_Items = new Dictionary<string, ItemScriptableObject>();
-        LoadAll();
+        
     }
 
     /*private string[] GetAssetsNames()
@@ -39,12 +48,18 @@ public class ItemLoader
         return assetNames;
     }*/
 
-    public void LoadAll(bool forceLoad = false)
+    public IEnumerator LoadAll(bool forceLoad = false)
     {
-        if (m_Items.Count > 0 && !forceLoad) return;
+        if (m_Items.Count <= 0 && forceLoad) 
+        {
+            //string[] assetNames = GetAssetsNames();
+            yield return BundleLoader.Instance.LoadAll<ItemScriptableObject>(GameParameters.BundleNames.SCRIT_OBJETS, true, OnLoadAllItems);
+        }
+        
+    }
 
-        //string[] assetNames = GetAssetsNames();
-        List<ItemScriptableObject> items = BundleLoader.Instance.LoadAll<ItemScriptableObject>(GameParameters.BundleNames.SCRIT_OBJETS, true);
+    private void OnLoadAllItems(List<ItemScriptableObject> items)
+    {
         foreach (ItemScriptableObject itemData in items)
         {
             //EItem itemId = itemData.Value.ItemId;
@@ -54,9 +69,9 @@ public class ItemLoader
         }
     }
 
+
     public Item Get(string itemName)
     {
-        if (m_Items.Count <= 0) LoadAll();
 
         if (!m_Items.ContainsKey(itemName.Trim()))
         {
@@ -67,9 +82,11 @@ public class ItemLoader
         return m_Items[itemName.Trim()].Value;
     }
 
-    public List<Item> GetAll(bool IsRefrigerator)
+    public IEnumerator GetAll(bool IsRefrigerator, Action<List<Item>> OnReturn)
     {
-        if(m_Items.Count <= 0) LoadAll();
+        while(IsLoading) yield return null; // wait for next frame until the itens are loading
+        
+        //if(m_Items.Count <= 0) yield return LoadAll();
 
         List<Item> result = new List<Item>();
 
@@ -79,6 +96,6 @@ public class ItemLoader
             if (item.IsRefrigerator == IsRefrigerator) result.Add(item);
         }
 
-        return result;
+        OnReturn?.Invoke(result);
     }
 }
